@@ -1,0 +1,347 @@
+﻿<%@ Master Language="VB" AutoEventWireup="true" CodeFile="Site.master.vb" Inherits="SiteMaster" %>
+
+<%@ Register assembly="Telerik.Web.UI" namespace="Telerik.Web.UI" tagprefix="telerik" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - DENTCAST DENTAL CLINIC</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/dental.ico" rel="shortcut icon" type="image/x-icon" />
+    <style type="text/css">
+        #noti_Counter {
+        display:block;
+        position:absolute;
+        width:18px;
+    height:18px;
+        background:#E1141E;
+        color:#FFF;
+         text-align:center;
+    text-decoration:none;
+        font-size:12px;
+        font-weight:normal;
+         margin:4px 0 0 110px;
+        border-radius:50%;
+         z-index:1;
+    }
+        #noti_Button {
+        border-radius:50%;
+        -moz-border-radius:50%; 
+        -webkit-border-radius:50%;
+        cursor:pointer;
+    }
+
+         #noti_Counter1 {
+        display:block;
+        position:absolute;
+           width:18px;
+    height:18px;
+        background:#E1141E;
+        color:#FFF;
+         text-align:center;
+    text-decoration:none;
+        font-size:12px;
+        font-weight:normal;
+        margin:30px 0 0 83px;
+        border-radius:50%;
+        z-index:1;
+    }
+        #noti_Button1 {
+        border-radius:50%;
+        -moz-border-radius:50%; 
+        -webkit-border-radius:50%;
+        cursor:pointer;
+    }
+            #noti_Counter2 {
+        display:block;
+        position:absolute;
+        background:#E1141E;
+        width:18px;
+        height:18px;
+        color:#FFF;
+         text-align:center;
+    text-decoration:none;
+        font-size:12px;
+        font-weight:normal;
+        /*padding:1px 3px;*/
+        margin:30px 0 0 120px;
+        border-radius:50%;
+        z-index:1;
+    }
+        #noti_Button2 {
+        border-radius:50%;
+        -moz-border-radius:50%; 
+        -webkit-border-radius:50%;
+        cursor:pointer;
+    }
+
+  .dropdown-submenu {
+  position: relative;
+  }
+
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  -webkit-border-radius: 0 6px 6px 6px;
+  -moz-border-radius: 0 6px 6px 6px;
+  border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu>.dropdown-menu{
+
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+  border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+  float: none;
+
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  -webkit-border-radius: 6px 0 6px 6px;
+  -moz-border-radius: 6px 0 6px 6px;
+  border-radius: 6px 0 6px 6px;
+}
+
+
+    </style>
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+               
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+ 
+         <script type="text/javascript">
+             window.onload = function()
+             {
+              $(document).ready(function () {
+
+                 if (document.getElementById('<%=NotiCount.ClientID %>').value > 0) {
+                  // ANIMATEDLY DISPLAY THE NOTIFICATION COUNTER.
+                     $('#noti_Counter')
+                         .css({ opacity: 0 })
+                         .text(document.getElementById('<%=NotiCount.ClientID %>').value)              // ADD DYNAMIC VALUE (YOU CAN EXTRACT DATA FROM DATABASE OR XML).
+                         .css({ top: '-10px' })
+                         .css({ "padding-top":'1px'})
+                         .css({ "padding-bottom": '1px' })
+                         .css({ "padding-right": '3px' })
+                         .css({ "padding-left": '3px' })
+                         .animate({ top: '-2px', opacity: 1 }, 500);
+                 
+
+                  $('#noti_Button').click(function () {
+                      $('#noti_Counter').fadeOut('slow');                 // HIDE THE COUNTER.
+                      window.location.href = "/ODCMAdmin/Reservation.aspx";
+                      return false;
+                     
+                  });
+                 }
+                 else {
+                     $('#noti_Counter').hide();
+                 }
+
+                  if (document.getElementById('<%=SupplyCount.ClientID %>').value > 0) {
+                  // ANIMATEDLY DISPLAY THE NOTIFICATION COUNTER.
+                     $('#noti_Counter1')
+                         .css({ opacity: 0 })
+                         .text(document.getElementById('<%=SupplyCount.ClientID %>').value)              // ADD DYNAMIC VALUE (YOU CAN EXTRACT DATA FROM DATABASE OR XML).
+                         .css({ top: '10px' })
+                         .css({ "padding-top":'1px'})
+                         .css({ "padding-bottom": '1px' })
+                         .css({ "padding-right": '3px' })
+                         .css({ "padding-left": '3px' })
+                         .animate({ top: '-2px', opacity: 1 }, 500);
+                
+
+                  $('#noti_Button1').click(function () {
+                      $('#noti_Counter1').fadeOut('slow');                 // HIDE THE COUNTER.
+                      window.location.href = "/ODCMAdmin/StockIN.aspx";
+                      return false;
+                  });
+                  }
+                  else {
+                      $('#noti_Counter1').hide();
+                  }
+                   if (document.getElementById('<%=PendingClient1.ClientID %>').value > 0) {
+                  // ANIMATEDLY DISPLAY THE NOTIFICATION COUNTER.
+                     $('#noti_Counter2')
+                         .css({ opacity: 0 })
+                         .text(document.getElementById('<%=PendingClient1.ClientID %>').value)              // ADD DYNAMIC VALUE (YOU CAN EXTRACT DATA FROM DATABASE OR XML).
+                         .css({ top: '10px' })
+                         .css({ "padding-top":'1px'})
+                         .css({ "padding-bottom": '1px' })
+                         .css({ "padding-right": '3px' })
+                         .css({ "padding-left": '3px' })
+                         .animate({ top: '-2px', opacity: 1 }, 500);
+                 
+
+                  $('#noti_Button2').click(function () {
+                      $('#noti_Counter2').fadeOut('slow');                 // HIDE THE COUNTER.
+                      window.location.href = "/ODCMAdmin/ApproveClient.aspx";
+                      return false;
+                  });
+                   }
+                   else {
+                       $('#noti_Counter2').hide();
+                   }
+              });
+
+             }
+          </script>
+       
+       <asp:TextBox ID="NotiCount" runat="server" style="display:none;"></asp:TextBox>
+       <asp:TextBox ID="SupplyCount" runat="server" style="display:none;"></asp:TextBox>
+       <asp:TextBox ID="PendingClient1" runat="server" style="display:none;"></asp:TextBox>
+        <div class="navbar navbar-inverse navbar-fixed-top" style="font-size: medium">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" runat="server" href="~/" style="font-family: 'Century Gothic'; font-size: 16px;">DENTCAST</a>
+                </div>
+                <div class="navbar-collapse collapse" style="font-family: 'Century Gothic'; font-size: medium;">
+                    <ul class="nav navbar-nav">
+
+                        <li runat="server" id="clientadmin" class="dropdown">
+                            <a runat="server" href="#" data-toggle="dropdown" class="dropdown-toggle">Client Information <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a runat="server" href="~/ODCMAdmin/ClientList">List of Client</a></li>
+                                <li id="noti_Button2"><a runat="server" href="~/ODCMAdmin/ApproveClient">Pending Client</a>
+                                     <div id="noti_Counter2"></div>   <!--SHOW NOTIFICATIONS COUNT.-->
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li runat="server" id="reservationuser" class="dropdown">
+                            <a runat="server" href="#" data-toggle="dropdown" class="dropdown-toggle">Make a Reservation <b class="caret"></b></a>
+                           <ul class="dropdown-menu">
+                                <li><a runat="server" href="~/ODCMUser/Reservation">Schedule Appointment</a></li>
+                                <li><a runat="server" href="~/ODCMUser/Schedule">View Schedule</a></li>
+                            </ul>
+                        </li>
+
+                        <li runat="server" id="reservationadmin" class="dropdown">
+                            <a runat="server" href="#" data-toggle="dropdown" class="dropdown-toggle">Manage Reservations <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li id="noti_Button"><a runat="server" href="~/ODCMAdmin/Reservation">Reservations</a>            
+                                    <div id="noti_Counter"></div>   <!--SHOW NOTIFICATIONS COUNT.-->
+                                </li>
+                                <li><a runat="server" href="~/ODCMAdmin/Diagnosis">Patient Diagnosis</a></li>
+                            </ul>
+                        </li>
+
+                         <li runat="server" id="recorduser"><a runat="server" href="~/ODCMUser/PatientRecord">Patient Records</a></li>
+
+                        <li runat="server" id="suppliesadmin" class="dropdown">
+                            <a runat="server" href="#" data-toggle="dropdown" class="dropdown-toggle">Manage Supplies <b class="caret"></b>   </a>
+                            <ul class="dropdown-menu">
+                                <li><a runat="server" href="~/ODCMAdmin/SupplyList">Supply List</a></li>
+                                <li id="noti_Button1"><a runat="server" href="~/StockIN">Stock IN</a>
+                                    <div id="noti_Counter1"></div>   <!--SHOW NOTIFICATIONS COUNT.-->
+                                </li>
+                                 <li><a runat="server" href="~/ODCMAdmin/StockOUT">Stock OUT</a></li>
+                                 <li><a runat="server" href="~/ODCMAdmin/StockOUTList">Stock OUT List</a></li>
+                                <li><a runat="server" href="~/ODCMAdmin/StockLogs">Stocks Logs</a></li>
+                                <li><a runat="server" href="~/ODCMAdmin/UOM">Unit of Measurement</a></li>
+                                <li><a runat="server" href="~/ODCMAdmin/Categories">Supply Categories</a></li>
+                            <li class="dropdown-submenu">
+                            <a tabindex="-1" class="dropdown-toggle" data-toggle="dropdown" href="#">Statistical Report</a>
+                            <ul class="dropdown-menu">
+                                    <li><a runat="server" href="~/ODCMAdmin/SupplyGraph">Stocks Monitoring</a></li>
+                                    <li><a runat="server" href="~/ODCMAdmin/ServiceGraph">In-Demand Services</a></li>
+                                    <li><a runat="server" href="~/ODCMAdmin/PatientGraph">Patients</a></li>
+                                    <li><a runat="server" href="~/ODCMAdmin/StocksGraph">Critical Stocks</a></li>
+                                </ul>
+                                </li>
+                            </ul>
+                       </li>
+                        <li runat="server" id="aboutservice"><a runat="server" href="~/ODCMUser/Service">Services Offered</a></li>
+                        <li runat="server" id="aboutuser"><a runat="server" href="~/ODCMUser/About">About</a></li>
+
+                        <li runat="server" id="serviceadmin"><a runat="server" href="~/ODCMAdmin/Service">Services Offered</a></li>
+
+                    </ul>
+
+                   <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                          <ul class="nav navbar-nav navbar-right">
+                        <li><a href="~/Account/Register.aspx" runat="server">Register</a></li>
+                        <li><a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a></li>
+                          </ul>
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                           <ul class="nav navbar-nav navbar-right">
+                              <li><a runat="server" href="~/">Hello, <b><asp:LoginName ID="HeadLoginName" runat="server" /></b>!</a></li> 
+                              <li><asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/></li>
+                           </ul>
+                    </LoggedInTemplate>
+                </asp:LoginView>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+               <center><p style="font-family: 'Century Gothic'">Dentcast Dental Clinic. © <%: DateTime.Now.Year %> | All Rights Reserved.</p></center>
+            </footer>
+        </div>
+    </form>
+</body>
+</html>

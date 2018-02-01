@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ODCM_Admin(1)", "ODCM_Admin\", "{76A5C822-61DD-4B7C-85A4-6F7FECAF6E07}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_14140"
+		Debug.AspNetCompiler.PhysicalPath = "ODCM_Admin\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_14140\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_14140"
+		Release.AspNetCompiler.PhysicalPath = "ODCM_Admin\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_14140\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "14140"
+		SlnRelativePath = "ODCM_Admin\"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{69A78439-6FB7-4AE6-B78B-BC894F9A45B2}"
+	ProjectSection(SolutionItems) = preProject
+		StringHolder.vb = StringHolder.vb
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76A5C822-61DD-4B7C-85A4-6F7FECAF6E07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76A5C822-61DD-4B7C-85A4-6F7FECAF6E07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
