@@ -60,9 +60,7 @@
         })(window);
     </script>
     <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <telerik:RadLabel ID="RadLabel1" runat="server" Font-Bold="True" Font-Names="Century Gothic" Font-Size="Large">
-        PATIENT CHART
-    </telerik:RadLabel>
+    <h2 style="font-family: 'Century Gothic'; font-weight: bold;" class ="text-center">PATIENT CHART</h2>
     <telerik:RadToolTipManager RenderMode="Lightweight" runat="server" ID="RadToolTip5" ShowEvent="OnMouseOver" OnClientShow="OnClientShow"
             Skin="Default" ShowDelay="200" AutoCloseDelay="3000" Width="150px" Position="TopRight"
             RelativeTo="Element">
@@ -554,7 +552,7 @@
     </telerik:RadAjaxManager>
     <telerik:RadAjaxLoadingPanel runat="server" ID="RadAjaxLoadingPanel1" Skin="Bootstrap" />
 
-  <telerik:RadGrid RenderMode="Lightweight" ID="RadGrid1" AllowSorting="True" Width="90%" OnNeedDataSource="RadGrid1_NeedDataSource" AllowPaging="True" runat="server" AutoGenerateColumns="False" GroupPanelPosition="Top" Skin="Bootstrap" Font-Names="Century Gothic">
+  <telerik:RadGrid RenderMode="Lightweight" ID="RadGrid1" AllowSorting="True" Width="90%" OnNeedDataSource="RadGrid1_NeedDataSource" runat="server" AutoGenerateColumns="False" GroupPanelPosition="Top" Skin="Bootstrap" Font-Names="Century Gothic">
             <FooterStyle Font-Names="Century Gothic" />
             <HeaderStyle Font-Names="Century Gothic" Font-Size="Medium" />
             <CommandItemStyle Font-Names="Century Gothic" />
@@ -583,31 +581,31 @@
                     FilterControlAltText="Filter column column" HeaderText="Last Name" 
                     ReadOnly="True" UniqueName="ID" Display="false">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="TeethID" 
                     FilterControlAltText="Filter column column" HeaderText="Teeth Number" 
                     ReadOnly="True" UniqueName="column">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="Service" 
                     FilterControlAltText="Filter column1 column" HeaderText="Service" 
                     ReadOnly="True" UniqueName="column1">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="Diagnosis" 
                     FilterControlAltText="Filter column2 column" HeaderText="Diagnosis" 
                     ReadOnly="True" UniqueName="column2">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                <telerik:GridBoundColumn DataField="ExamDate" 
                     FilterControlAltText="Filter column2 column" HeaderText="Date" 
                     ReadOnly="True" UniqueName="column2">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                      <telerik:GridButtonColumn HeaderText="View History" ItemStyle-Width="170px" ButtonType="ImageButton" CommandName="View" ImageUrl="~/Images/View.png">
                      <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />

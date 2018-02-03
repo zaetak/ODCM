@@ -27,7 +27,7 @@
                    top: 4px;
                }
            </style>
-
+           <h2 style="font-family: 'Century Gothic'; font-weight: bold;" class ="text-center">CLIENT LIST</h2>
     <table style="width:100%; height: 76px;">
         <tr>
             <td style="width: 100px; height: 41px;"></td>
@@ -56,7 +56,7 @@
     <center style="width: 100%">
         <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="False" 
         GroupPanelPosition="Top" Skin="Bootstrap" 
-        Width="1158px" AllowPaging="True" Font-Names="Century Gothic" Font-Size="Medium">
+        Width="1158px" Font-Names="Century Gothic" Font-Size="Medium">
 
 <GroupingSettings CollapseAllTooltip="Collapse all groups"></GroupingSettings>
         <AlternatingItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Font-Names="Century Gothic" />
@@ -75,25 +75,25 @@
                     FilterControlAltText="Filter column column" HeaderText="Last Name" 
                     ReadOnly="True" UniqueName="column">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="FirstName" 
                     FilterControlAltText="Filter column1 column" HeaderText="First Name" 
                     ReadOnly="True" UniqueName="column1">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="MiddleName" 
                     FilterControlAltText="Filter column2 column" HeaderText="Middle Name" 
                     ReadOnly="True" UniqueName="column2">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="ExamDate" 
                     FilterControlAltText="Filter column5 column" HeaderText="Last Visit" 
                     ReadOnly="True" UniqueName="ExamDate">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
             </Columns>
         </MasterTableView>

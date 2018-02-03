@@ -26,10 +26,7 @@
     <br />
     <telerik:RadWindowManager RenderMode="Lightweight" ID="RadWindowManager1" runat="server" EnableShadow="true">
                             </telerik:RadWindowManager>
-    <p>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><span class="auto-style1">Schedule an appointment.
-    </span></strong>
-    </p>
+    <h2 style="font-family: 'Century Gothic'; font-weight: bold;" class ="text-center">SCHEDULE AN APPOINTMENT</h2>
     <telerik:RadScheduler RenderMode="Lightweight" runat="server" ID="RadScheduler1" Skin="Bootstrap" FirstDayOfWeek="Monday" LastDayOfWeek="Saturday"
             SelectedView="WeekView" Height="865px" AllowEdit="false" AllowDelete="false" AllowInsert="true" DayEndTime="20:00:00" EnableDescriptionField="true">
             <WeekView UserSelectable="true" />

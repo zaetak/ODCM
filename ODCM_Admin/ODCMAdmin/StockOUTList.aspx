@@ -108,6 +108,7 @@
             return false;
         }
     </script>
+    <h2 style="font-family: 'Century Gothic'; font-weight: bold;" class ="text-center">STOCK OUT INFORMATION CONTROL</h2>
     <table class="auto-style83">
         <tr>
             <td class="auto-style7"></td>
@@ -167,43 +168,43 @@
                 <Columns>
                               <telerik:GridTemplateColumn FilterControlAltText="Filter TemplateColumn column" UniqueName="TemplateColumn">
 
-                                <ItemTemplate>
-                                    <asp:Label runat="server" ID="lblRowNumber" Text='<%# Container.DataSetIndex+1 %>'></asp:Label>
-                                 </ItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label runat="server" ID="lblRowNumber" Text='<%# Container.DataSetIndex+1 %>'></asp:Label>
+                                     </ItemTemplate>
 
-                                <HeaderStyle Width="50px"></HeaderStyle>
-                                 <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" />
+                                    <HeaderStyle Width="100px"></HeaderStyle>
+                                     <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" />
                               </telerik:GridTemplateColumn>
                               <telerik:GridBoundColumn DataField="ID" 
-                   HeaderText="ID" 
-                    UniqueName="ID" Display="false">
-                    <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"/>
-                </telerik:GridBoundColumn>
-                    <telerik:GridTemplateColumn DataField="ItemName" UniqueName="ItemName" HeaderText="Item Name" ItemStyle-Width="240px">
+                                    HeaderText="ID" 
+                                    UniqueName="ID" Display="false">
+                                    <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle"/>
+                              </telerik:GridBoundColumn>
+                              <telerik:GridTemplateColumn DataField="ItemName" UniqueName="ItemName" HeaderText="Item Name" ItemStyle-Width="350px">
                  
-                        <ItemTemplate>
-                            <%#DataBinder.Eval(Container.DataItem, "ItemName")%>
-                        </ItemTemplate>
+                                    <ItemTemplate>
+                                        <%#DataBinder.Eval(Container.DataItem, "ItemName")%>
+                                    </ItemTemplate>
 
-                 <EditItemTemplate>
-                    <telerik:RadComboBox ID="List1" runat="server" RenderMode="Lightweight" Skin="Bootstrap" Width="185px" AllowCustomText="true"/>
-                </EditItemTemplate>
-                  <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                    </telerik:GridTemplateColumn>
+                                     <EditItemTemplate>
+                                        <telerik:RadComboBox ID="List1" runat="server" RenderMode="Lightweight" Skin="Bootstrap" Width="185px" AllowCustomText="true"/>
+                                    </EditItemTemplate>
+                                      <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                        <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
+                            </telerik:GridTemplateColumn>
           
-                <telerik:GridBoundColumn DataField="Quantity" 
-                 HeaderText="Quantity" 
-                   UniqueName="Quantity">
-                    <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                </telerik:GridBoundColumn>
-                    <telerik:GridButtonColumn ConfirmText="Delete on the list?" ConfirmDialogType="RadWindow" HeaderText="Delete" ItemStyle-Width="170px"
-                        ConfirmTitle="Delete" ButtonType="ImageButton" CommandName="Delete" ImageUrl="~/Images/Delete.png">
-                          <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                        </telerik:GridButtonColumn>
+                            <telerik:GridBoundColumn DataField="Quantity" 
+                                HeaderText="Quantity" 
+                                UniqueName="Quantity">
+                                <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" />
+                            </telerik:GridBoundColumn>
+                            <telerik:GridButtonColumn ConfirmText="Delete on the list?" ConfirmDialogType="RadWindow" HeaderText="Delete" ItemStyle-Width="170px"
+                                ConfirmTitle="Delete" ButtonType="ImageButton" CommandName="Delete" ImageUrl="~/Images/Delete.png">
+                                  <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                            </telerik:GridButtonColumn>
                              </Columns>
 
 <EditFormSettings>

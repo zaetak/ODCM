@@ -11,11 +11,7 @@
     </script>
        <telerik:RadWindowManager RenderMode="Lightweight" ID="RadWindowManager1" runat="server" EnableShadow="true">
         </telerik:RadWindowManager>
-      <telerik:RadLabel ID="RadLabel2" runat="server" Font-Bold="True" Font-Names="Century Gothic" Font-Size="Large">
-        PATIENT DIAGNOSIS
-    </telerik:RadLabel>
-    <br />
-    <br />
+    <h2 style="font-family: 'Century Gothic'; font-weight: bold;" class ="text-center">PATIENT ORTHODONTICS</h2>
 <table  style="width:100%;">
         <tr>
             <td style="width: 71px; height: 37px;"></td>

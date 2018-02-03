@@ -66,7 +66,7 @@
 
 
            </style>
-
+        <h2 style="font-family: 'Century Gothic'; font-weight: bold;" class ="text-center">SERVICES OFFERED</h2>
         <table class="auto-style11">
         <tr>
             <td class="auto-style7"></td>

@@ -60,9 +60,7 @@
         })(window);
     </script>
     <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <telerik:RadLabel ID="RadLabel1" runat="server" Font-Bold="True" Font-Names="Century Gothic" Font-Size="Large">
-        PATIENT CHART
-    </telerik:RadLabel>
+    <h2 style="font-family: 'Century Gothic'; font-weight: bold;" class ="text-center">PATIENT CHART</h2>
     <telerik:RadToolTipManager RenderMode="Lightweight" runat="server" ID="RadToolTip5" ShowEvent="OnMouseOver" OnClientShow="OnClientShow"
             Skin="Default" ShowDelay="200" AutoCloseDelay="3000" Width="150px" Position="TopRight"
             RelativeTo="Element">

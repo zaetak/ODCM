@@ -13,11 +13,11 @@
     </style>
 
     <style type="text/css">
-    .rgMasterTable
-    {
-        font-size: medium !important;
-        font-family: 'Century Gothic' !important;
-    }
+        .rgMasterTable
+        {
+            font-size: medium !important;
+            font-family: 'Century Gothic' !important;
+        }
         .auto-style1 {
             width: 789px;
         }
@@ -33,7 +33,7 @@
             return false;
         }
     </script>
-    <h2 style="font-family: 'Century Gothic'"><%: Title %>.</h2>
+    <h2 style="font-family: 'Century Gothic'; font-weight: bold;" class ="text-center">PENDING CLIENT</h2>
     <table class="auto-style2">
         <tr>
             <td style="width: 100px; height: 41px;"></td>
@@ -85,31 +85,31 @@
                     FilterControlAltText="Filter column column" HeaderText="ClientID" 
                     ReadOnly="True" UniqueName="ID" Display="false">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="LastName" 
                     FilterControlAltText="Filter column column" HeaderText="Last Name" 
                     ReadOnly="True" UniqueName="column">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="FirstName" 
                     FilterControlAltText="Filter column1 column" HeaderText="First Name" 
                     ReadOnly="True" UniqueName="column1">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="MiddleName" 
                     FilterControlAltText="Filter column2 column" HeaderText="Middle Name" 
                     ReadOnly="True" UniqueName="column2">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="UserName" 
                     FilterControlAltText="Filter column5 column" HeaderText="User Name" 
                     ReadOnly="True" UniqueName="column5">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                 <telerik:GridButtonColumn CommandName="Select"
                     FilterControlAltText="Filter column8 column" HeaderText="Approve as Client" 

@@ -61,13 +61,14 @@
 
 
            </style>
-           <style type="text/css">
-    .rgMasterTable
-    {
-        font-size: medium !important;
-        font-family: 'Century Gothic' !important;
-    }
-</style>
+          <style type="text/css">
+                .rgMasterTable
+                {
+                    font-size: medium !important;
+                    font-family: 'Century Gothic' !important;
+                }
+          </style>
+        <h2 style="font-family: 'Century Gothic'; font-weight: bold;" class ="text-center">SUPPLY CATEGORY</h2>
         <table style="width:100%; height: 76px;">
         <tr>
             <td class="auto-style7"></td>

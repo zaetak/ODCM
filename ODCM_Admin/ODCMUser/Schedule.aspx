@@ -66,7 +66,7 @@
 
            </style>
  
-  
+    <h2 style="font-family: 'Century Gothic'">Patient Schedule.</h2>
     <table style="width:100%; height: 76px;">
         <tr>
             <td class="auto-style7"></td>

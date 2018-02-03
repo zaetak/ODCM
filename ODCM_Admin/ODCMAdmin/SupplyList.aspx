@@ -70,6 +70,7 @@
     </script>
      <telerik:RadWindowManager RenderMode="Lightweight" ID="RadWindowManager2" runat="server" EnableShadow="true">
         </telerik:RadWindowManager>
+        <h2 style="font-family: 'Century Gothic'; font-weight: bold;" class ="text-center">SUPPLY LIST</h2>
     <table style="width:100%; height: 76px;">
         <tr>
             <td class="auto-style7"></td>
@@ -139,7 +140,7 @@
     <center>
      <div>
          <telerik:RadGrid RenderMode="Lightweight" ID="RadGrid1" AllowSorting="True" Width="100%"
-            AllowAutomaticInserts="True" AllowAutomaticUpdates="True" AllowAutomaticDeletes="True" OnNeedDataSource="RadGrid1_NeedDataSource" AllowPaging="True" runat="server" OnItemCreated="RadGrid_ItemCreated" OnUpdateCommand="RadGrid_ItemUpdated" OnInsertCommand="RadGrid_InsertCommand"
+            AllowAutomaticInserts="True" AllowAutomaticUpdates="True" AllowAutomaticDeletes="True" OnNeedDataSource="RadGrid1_NeedDataSource" runat="server" OnItemCreated="RadGrid_ItemCreated" OnUpdateCommand="RadGrid_ItemUpdated" OnInsertCommand="RadGrid_InsertCommand"
              AutoGenerateColumns="False" GroupPanelPosition="Top" Skin="Bootstrap" Font-Names="Century Gothic" Font-Size="Medium">
             <PagerStyle Mode="NextPrevAndNumeric"></PagerStyle>
             <MasterTableView Width="100%" CommandItemDisplay="Top"
@@ -158,31 +159,25 @@
                     </telerik:GridTemplateColumn>
                      <telerik:GridBoundColumn DataField="SupplyID" UniqueName="SupplyID" HeaderText="Product Number" Display="false">
                         <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" Width="15%"/>
+                    <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" Width="15%"/>
                     </telerik:GridBoundColumn>
                       <telerik:GridBoundColumn DataField="InvoiceNo" 
-                 HeaderText="Invoice Number" 
-                   UniqueName="InvoiceNo">
-                    <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"  Width="15%"/>
-                </telerik:GridBoundColumn>
+                            HeaderText="Invoice Number" 
+                            UniqueName="InvoiceNo">
+                            <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
+                            <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle"  Width="13%"/>
+                        </telerik:GridBoundColumn>
                      <telerik:GridBoundColumn DataField="Supplier" 
                    HeaderText="Supplier" 
                     UniqueName="Supplier">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"  Width="15%"/>
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle"  Width="15%"/>
                 </telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="Item Name" 
                    HeaderText="Item Name" 
                     UniqueName="ItemName">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"  Width="15%"/>
-                </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn DataField="Quantity" 
-                 HeaderText="Quantity" 
-                   UniqueName="Quantity">
-                    <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"  Width="10%"/>
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle"  Width="15%"/>
                 </telerik:GridBoundColumn>
 
                     
@@ -197,7 +192,7 @@
                     <telerik:RadComboBox ID="List1" runat="server" RenderMode="Lightweight" Skin="Bootstrap" Width="185px" AllowCustomText="true"/>
                 </EditItemTemplate>
                   <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"  Width="15%"/>
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle"  Width="15%"/>
                     </telerik:GridTemplateColumn>
 
             <telerik:GridTemplateColumn UniqueName="Category" HeaderText="Category" ItemStyle-Width="240px">
@@ -210,7 +205,7 @@
                     <telerik:RadComboBox ID="List2" runat="server" RenderMode="Lightweight" Skin="Bootstrap" Width="185px"/>
                 </EditItemTemplate>
                   <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"  Width="15%"/>
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle"  Width="15%"/>
                     </telerik:GridTemplateColumn>
 
 
@@ -226,9 +221,18 @@
                             </telerik:RadDatePicker>
                         </EditItemTemplate>
                         <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"  Width="15%"/>
+                        <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle"  Width="15%"/>
                     </telerik:GridTemplateColumn>
 
+
+                <telerik:GridBoundColumn DataField="Quantity" 
+                 HeaderText="Quantity" 
+                   UniqueName="Quantity">
+                    <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle"  Width="10%"/>
+                </telerik:GridBoundColumn>
+
+                    
 
                     <telerik:GridEditCommandColumn>
                     </telerik:GridEditCommandColumn>
@@ -242,12 +246,6 @@
             </MasterTableView>
 <GroupingSettings CollapseAllTooltip="Collapse all groups"></GroupingSettings>
 
-
-<%--             <FooterStyle Font-Names="Century Gothic" />
-             <HeaderStyle Font-Names="Century Gothic" Font-Size="Medium" />
-             <CommandItemStyle Font-Names="Century Gothic" Font-Size="Medium" />
-             <ActiveItemStyle Font-Names="Century Gothic" />
-             <ItemStyle Font-Names="Century Gothic" Font-Size="Medium" />--%>
 
 
 <FilterMenu RenderMode="Lightweight"></FilterMenu>

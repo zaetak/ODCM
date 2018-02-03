@@ -8,6 +8,7 @@
     </telerik:RadLabel>
     <br />
     <br />
+    <h2 style="font-family: 'Century Gothic'; font-weight: bold;" class ="text-center">PATIENT ORTHODONTICS</h2>
 <table  style="width:100%;">
         <tr>
             <td style="width: 71px; height: 37px;"></td>

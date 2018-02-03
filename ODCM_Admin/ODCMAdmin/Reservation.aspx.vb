@@ -235,7 +235,7 @@ hades:
 
         WB.Worksheets.Item(0).Cells("B10").Value = Service.Text
         WB.Worksheets.Item(0).Cells("D10").Value = Status.Text
-        WS.Cells.Style.ShrinkToFit = True
+        WS.Cells.Style.WrapText = True
         WS.InsertDataTable(rptTbl, New InsertDataTableOptions("A12"))
 
         Dim Filename As String = "ReservationList_" & Format(DateTime.Now, "MMddyyyy_HHmmss") & ".pdf"

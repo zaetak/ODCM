@@ -71,6 +71,7 @@
           var exp = $find("<%=RadClientExportManager1.ClientID%>").exportPDF($telerik.$(".RadHtmlChart"));
       }
   </script>
+  <h2 style="font-family: 'Century Gothic'; font-weight: bold;" class ="text-center">STOCKS INFORMATION STATISTICS</h2>
     <table style="width:100%; height: 76px;">
         <tr>
             <td class="auto-style7"></td>

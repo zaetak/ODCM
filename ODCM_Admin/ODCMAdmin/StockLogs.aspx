@@ -72,7 +72,7 @@
     </style>
  
  
-  
+    <h2 style="font-family: 'Century Gothic'; font-weight: bold;" class ="text-center">STOCK INFORMATION LOGS</h2>
     <table style="width:100%; height: 76px;">
         <tr>
             <td class="auto-style7"></td>
@@ -154,44 +154,44 @@
                     FilterControlAltText="Filter column8 column" HeaderText="Invoice Number" 
                     ReadOnly="True" UniqueName="column8">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="ItemName" 
                     FilterControlAltText="Filter column column" HeaderText="Item Name" 
                     ReadOnly="True" UniqueName="column">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn DataField="Quantity" 
-                    FilterControlAltText="Filter column1 column" HeaderText="Quantity" 
-                    ReadOnly="True" UniqueName="column1">
-                    <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="UOM" 
                     FilterControlAltText="Filter column2 column" HeaderText="UOM" 
                     ReadOnly="True" UniqueName="column2">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="Category" 
                     FilterControlAltText="Filter column5 column" HeaderText="Category" 
                     ReadOnly="True" UniqueName="column5">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                  <telerik:GridBoundColumn DataField="Stock" 
                     FilterControlAltText="Filter column6 column" HeaderText="Stock" 
                     ReadOnly="True" UniqueName="column6">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                   
                   <telerik:GridBoundColumn DataField="DateStock" 
                     FilterControlAltText="Filter column7 column" HeaderText="Date Stock" 
                     ReadOnly="True" UniqueName="column7">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
+                </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn DataField="Quantity" 
+                    FilterControlAltText="Filter column1 column" HeaderText="Quantity" 
+                    ReadOnly="True" UniqueName="column1">
+                    <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
             </Columns>
         </MasterTableView>

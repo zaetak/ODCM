@@ -27,7 +27,7 @@
     text-decoration:none;
         font-size:12px;
         font-weight:normal;
-         margin:4px 0 0 110px;
+         margin:4px 0 0 160px;
         border-radius:50%;
          z-index:1;
     }
@@ -42,11 +42,11 @@
         display:block;
         position:absolute;
            width:18px;
-    height:18px;
+        height:18px;
         background:#E1141E;
         color:#FFF;
          text-align:center;
-    text-decoration:none;
+        text-decoration:none;
         font-size:12px;
         font-weight:normal;
         margin:30px 0 0 83px;
@@ -258,7 +258,7 @@
                     <ul class="nav navbar-nav">
 
                         <li runat="server" id="clientadmin" class="dropdown">
-                            <a runat="server" href="#" data-toggle="dropdown" class="dropdown-toggle">Client Information <b class="caret"></b></a>
+                            <a runat="server" href="#" data-toggle="dropdown" class="dropdown-toggle">Client Information<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a runat="server" href="~/ODCMAdmin/ClientList">List of Client</a></li>
                                 <li id="noti_Button2"><a runat="server" href="~/ODCMAdmin/ApproveClient">Pending Client</a>
@@ -276,19 +276,19 @@
                         </li>
 
                         <li runat="server" id="reservationadmin" class="dropdown">
-                            <a runat="server" href="#" data-toggle="dropdown" class="dropdown-toggle">Manage Reservations <b class="caret"></b></a>
+                            <a runat="server" href="#" data-toggle="dropdown" class="dropdown-toggle">View Reservations<b class="caret"></b></a><div id="noti_Counter"></div>
                             <ul class="dropdown-menu">
                                 <li id="noti_Button"><a runat="server" href="~/ODCMAdmin/Reservation">Reservations</a>            
-                                    <div id="noti_Counter"></div>   <!--SHOW NOTIFICATIONS COUNT.-->
+                                  <!--  <div id="noti_Counter"></div>   SHOW NOTIFICATIONS COUNT.-->
                                 </li>
                                 <li><a runat="server" href="~/ODCMAdmin/Diagnosis">Patient Diagnosis</a></li>
                             </ul>
                         </li>
 
                          <li runat="server" id="recorduser"><a runat="server" href="~/ODCMUser/PatientRecord">Patient Records</a></li>
-
+                         <!---->
                         <li runat="server" id="suppliesadmin" class="dropdown">
-                            <a runat="server" href="#" data-toggle="dropdown" class="dropdown-toggle">Manage Supplies <b class="caret"></b>   </a>
+                            <a runat="server" href="#" data-toggle="dropdown" class="dropdown-toggle">Manage Supplies<b class="caret"></b>   </a>
                             <ul class="dropdown-menu">
                                 <li><a runat="server" href="~/ODCMAdmin/SupplyList">Supply List</a></li>
                                 <li id="noti_Button1"><a runat="server" href="~/StockIN">Stock IN</a>
@@ -299,21 +299,23 @@
                                 <li><a runat="server" href="~/ODCMAdmin/StockLogs">Stocks Logs</a></li>
                                 <li><a runat="server" href="~/ODCMAdmin/UOM">Unit of Measurement</a></li>
                                 <li><a runat="server" href="~/ODCMAdmin/Categories">Supply Categories</a></li>
-                            <li class="dropdown-submenu">
-                            <a tabindex="-1" class="dropdown-toggle" data-toggle="dropdown" href="#">Statistical Report</a>
-                            <ul class="dropdown-menu">
-                                    <li><a runat="server" href="~/ODCMAdmin/SupplyGraph">Stocks Monitoring</a></li>
-                                    <li><a runat="server" href="~/ODCMAdmin/ServiceGraph">In-Demand Services</a></li>
-                                    <li><a runat="server" href="~/ODCMAdmin/PatientGraph">Patients</a></li>
-                                    <li><a runat="server" href="~/ODCMAdmin/StocksGraph">Critical Stocks</a></li>
-                                </ul>
-                                </li>
+                                
                             </ul>
                        </li>
-                        <li runat="server" id="aboutservice"><a runat="server" href="~/ODCMUser/Service">Services Offered</a></li>
+                       <li runat="server" id="statgraph" class="dropdown">
+                            <a runat="server" href="#" data-toggle="dropdown" class="dropdown-toggle">Reports<b class="caret"></b>   </a>
+                            <ul class="dropdown-menu">
+                                <li><a runat="server" href="~/ODCMAdmin/SupplyGraph">Stocks Monitoring</a></li>
+                                <li><a runat="server" href="~/ODCMAdmin/ServiceGraph">In-Demand Services</a></li>
+                                <li><a runat="server" href="~/ODCMAdmin/PatientGraph">Patients</a></li>
+                                <li><a runat="server" href="~/ODCMAdmin/StocksGraph">Critical Stocks</a></li>
+                            </ul>
+                        </li>
+                       <!---->
+                        <li runat="server" id="aboutservice"><a runat="server" href="~/ODCMUser/Service">Services</a></li>
                         <li runat="server" id="aboutuser"><a runat="server" href="~/ODCMUser/About">About</a></li>
 
-                        <li runat="server" id="serviceadmin"><a runat="server" href="~/ODCMAdmin/Service">Services Offered</a></li>
+                        <li runat="server" id="serviceadmin"><a runat="server" href="~/ODCMAdmin/Service">Services</a></li>
 
                     </ul>
 

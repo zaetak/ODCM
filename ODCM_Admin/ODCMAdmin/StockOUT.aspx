@@ -233,7 +233,7 @@
         }
     </script>
        <telerik:RadWindowManager RenderMode="Lightweight" ID="RadWindowManager2" runat="server"/>
-
+       <h2 style="font-family: 'Century Gothic'; font-weight: bold;" class ="text-center">STOCK OUT</h2>
     <table class="auto-style83">
         <tr>
             <td class="auto-style7"></td>
@@ -295,13 +295,13 @@
                     FilterControlAltText="Filter column column" HeaderText="Item Name" 
                     ReadOnly="True" UniqueName="column">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="Quantity" 
                     FilterControlAltText="Filter column1 column" HeaderText="Quantity" 
                     ReadOnly="True" UniqueName="column1">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="SupplyID" Display="False" FilterControlAltText="Filter column3 column" UniqueName="column3">
                 </telerik:GridBoundColumn>
@@ -343,10 +343,16 @@
         <AlternatingItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Font-Names="Century Gothic" Font-Size="Medium" />
         <MasterTableView>
             <Columns>
+                <%--  <telerik:GridButtonColumn CommandName="Stock" 
+                    FilterControlAltText="Filter column8 column" HeaderText="Stock OUT" 
+                    UniqueName="column8" Text="Update" ButtonType="PushButton">
+                    <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                </telerik:GridButtonColumn>--%>
                 <telerik:GridTemplateColumn FilterControlAltText="Filter TemplateColumn column" UniqueName="TemplateColumn">
 
                     <ItemTemplate>
-                        <asp:Label runat="server" ID="lblRowNumber" Text='<%# Container.DataSetIndex+1 %>'></asp:Label>
+                        <asp:Label runat="server" ID="lblRowNumber" Text='<%# Container.DataSetIndex + 1 %>'></asp:Label>
                     </ItemTemplate>
 
                         <HeaderStyle Width="50px"></HeaderStyle>
@@ -356,32 +362,26 @@
                     FilterControlAltText="Filter column column" HeaderText="Item Name" 
                     ReadOnly="True" UniqueName="column">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn DataField="Quantity" 
-                    FilterControlAltText="Filter column1 column" HeaderText="Quantity" 
-                    ReadOnly="True" UniqueName="column1">
-                    <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="UOM" 
                     FilterControlAltText="Filter column2 column" HeaderText="UOM" 
                     ReadOnly="True" UniqueName="column2">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="Category" 
                     FilterControlAltText="Filter column5 column" HeaderText="Category" 
                     ReadOnly="True" UniqueName="column5">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
-                <%--  <telerik:GridButtonColumn CommandName="Stock" 
-                    FilterControlAltText="Filter column8 column" HeaderText="Stock OUT" 
-                    UniqueName="column8" Text="Update" ButtonType="PushButton">
+                <telerik:GridBoundColumn DataField="Quantity" 
+                    FilterControlAltText="Filter column1 column" HeaderText="Quantity" 
+                    ReadOnly="True" UniqueName="column1">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                </telerik:GridButtonColumn>--%>
+                    <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" />
+                </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="SupplyID" Display="False" FilterControlAltText="Filter column3 column" UniqueName="column3">
                 </telerik:GridBoundColumn>
             </Columns>
