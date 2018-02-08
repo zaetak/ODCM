@@ -1,7 +1,8 @@
-﻿<%@ Page Title="Services Offered" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="Service.aspx.vb" Inherits="Service" %>
+﻿<%@ Page Title="Edit Reservation" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="Dayoff.aspx.vb" Inherits="ODCMAdmin_Dayoff" %>
 <%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-          <style type="text/css">
+       <style type="text/css">
                          
     .ModalBackground
 {
@@ -30,10 +31,10 @@
            }
            .auto-style3 {
                height: 41px;
-               width: 477px;
+               width: 113px;
            }
            .auto-style4 {
-               width: 477px;
+               width: 113px;
                text-align: right;
            }
            .auto-style5 {
@@ -59,15 +60,9 @@
            }
 
 
-              .auto-style11 {
-                  width: 100%;
-                  height: 76px;
-              }
-
-
            </style>
-        <h2 style="font-family: 'Century Gothic'; font-weight: bold;" class ="text-center">SERVICES OFFERED</h2>
-        <table class="auto-style11">
+        <h2 style="font-family: 'Century Gothic'; font-weight: bold;" class ="text-center">EDIT RESERVATION</h2>
+        <table style="width:100%; height: 76px;">
         <tr>
             <td class="auto-style7"></td>
             <td style="width: 88px; height: 41px;">
@@ -84,19 +79,25 @@
             <td style="width: 88px" class="text-right"> <telerik:RadLabel ID="RadLabel1" runat="server" Skin="Bootstrap" style="font-size: large" Font-Bold="True" Font-Names="Century Gothic" Font-Size="Medium">
                     Search:</telerik:RadLabel></td>
             <td class="auto-style2">
-                <telerik:RadTextBox ID="RadTextBox1" Runat="server" Height="32px" Skin="Bootstrap" Width="227px" AutoPostBack="True" Font-Names="Century Gothic" Font-Size="Medium">
-                </telerik:RadTextBox>
+                <telerik:RadDatePicker ID="RadDatePicker1" runat="server" Skin="Bootstrap" Width="280px" ZIndex="10000001">
+                    <Calendar EnableWeekends="True" FastNavigationNextText="&amp;lt;&amp;lt;" Skin="Bootstrap" UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False">
+                    </Calendar>
+                    <DateInput DateFormat="MM/dd/yyyy" DisplayDateFormat="MM/dd/yyyy" LabelWidth="40%">
+                        <EmptyMessageStyle Resize="None" />
+                        <ReadOnlyStyle Resize="None" />
+                        <FocusedStyle Resize="None" />
+                        <DisabledStyle Resize="None" />
+                        <InvalidStyle Resize="None" />
+                        <HoveredStyle Resize="None" />
+                        <EnabledStyle Resize="None" />
+                    </DateInput>
+                    <DatePopupButton HoverImageUrl="" ImageUrl="" />
+                </telerik:RadDatePicker>
             </td>
             <td class="auto-style4">
                 &nbsp;</td>
             <td class="auto-style6">
-              
-                   <strong>
-                <telerik:RadButton ID="RadButton1" runat="server" Font-Bold="True" Font-Names="Century Gothic" Height="25px" style="font-size: 16px; margin-top: 0px" Text="Print" Width="117px" Skin="Bootstrap" BorderColor="#666666" CssClass="auto-style2" Target="_blank">
-                </telerik:RadButton>
-                </strong>
-              
-            </td>
+                &nbsp;</td>
             <td class="auto-style10">
                 &nbsp;</td>
             <td>
@@ -115,42 +116,70 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
+
     <telerik:RadAjaxLoadingPanel runat="server" ID="RadAjaxLoadingPanel1" Skin="Bootstrap" />
     <center>
     <div>
-         <telerik:RadGrid RenderMode="Lightweight" ID="RadGrid1" AllowSorting="True" Width="60%" AllowAutomaticDeletes="True" OnNeedDataSource="RadGrid1_NeedDataSource" AllowPaging="True" runat="server" OnItemCreated="RadGrid_ItemCreated" OnUpdateCommand="RadGrid_ItemUpdated" OnInsertCommand="RadGrid_InsertCommand"
-            OnDeleteCommand="RadGrid_ItemDeleted" AutoGenerateColumns="False" GroupPanelPosition="Top" Skin="Bootstrap" Font-Names="Century Gothic" Font-Size="Medium">
+         <telerik:RadGrid 
+
+         RenderMode="Lightweight" 
+         ID="RadGrid1" 
+         ShowPrintButton="true"
+         AllowSorting="True" Width="50%"
+            AllowAutomaticInserts="True" AllowAutomaticUpdates="True" AllowAutomaticDeletes="True" OnNeedDataSource="RadGrid1_NeedDataSource" AllowPaging="True" runat="server" OnItemCreated="RadGrid_ItemCreated" OnUpdateCommand="RadGrid_ItemUpdated" OnInsertCommand="RadGrid_InsertCommand"
+            OnDeleteCommand="RadGrid_ItemDeleted" AutoGenerateColumns="False" GroupPanelPosition="Top" Skin="Bootstrap" Font-Names="Century Gothic" Font-Size="Medium"
+            >
              <FooterStyle Font-Names="Century Gothic" Font-Size="Medium" />
              <HeaderStyle Font-Names="Century Gothic" Font-Size="Medium" />
              <CommandItemStyle Font-Names="Century Gothic" Font-Size="Medium" />
              <ActiveItemStyle Font-Names="Century Gothic" Font-Size="Medium" />
              <ItemStyle Font-Names="Century Gothic" Font-Size="Medium" />
             <PagerStyle Mode="NextPrevAndNumeric" Font-Names="Century Gothic" Font-Size="Medium"></PagerStyle>
-             <AlternatingItemStyle Font-Names="Century Gothic" Font-Size="Medium" />
+  
             <MasterTableView Width="100%" CommandItemDisplay="Top"
-                DataKeyNames="Services Offered" InsertItemDisplay="Top"
+                DataKeyNames="ID" InsertItemDisplay="Top"
+                
                 InsertItemPageIndexAction="ShowItemOnFirstPage">
-                <CommandItemSettings ShowAddNewRecordButton="false" />
                 <Columns>
-                    <%--<telerik:GridEditCommandColumn>
-                    </telerik:GridEditCommandColumn>--%>
-                     <telerik:GridTemplateColumn FilterControlAltText="Filter TemplateColumn column" UniqueName="TemplateColumn">
-                         <ItemTemplate>
-                                <asp:Label runat="server" ID="lblRowNumber" Text='<%# Container.DataSetIndex+1 %>'></asp:Label>
+                    <telerik:GridTemplateColumn FilterControlAltText="Filter TemplateColumn column" UniqueName="TemplateColumn">
+
+                    <ItemTemplate>
+                            <asp:Label runat="server" ID="lblRowNumber" Text='<%# Container.DataSetIndex+1 %>'></asp:Label>
                          </ItemTemplate>
-                         <ItemStyle HorizontalAlign="Right" />
+
+                        <HeaderStyle Width="50px"></HeaderStyle>
+                         <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" />
                     </telerik:GridTemplateColumn>
-                    
-                     <telerik:GridBoundColumn DataField="ID" UniqueName="ID" HeaderText="Service ID" Display="false">
+                     <telerik:GridBoundColumn DataField="ID" UniqueName="ID" HeaderText="ID" ReadOnly="true" Display="false">
                         <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
                     <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                     </telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="Services Offered" UniqueName="Services" HeaderText="Services Offered"
+
+                      <telerik:GridTemplateColumn UniqueName="DateOff" HeaderText="Date">
+                        <ItemTemplate>
+                            <%#DataBinder.Eval(Container.DataItem, "DateOff")%>
+                        </ItemTemplate>
+                 
+                        <EditItemTemplate>
+                            <telerik:RadDatePicker ID="RadDatePicker1" runat="server" Culture="en-US" Font-Names="Arial" Font-Overline="False" Font-Size="Medium" Skin="Bootstrap" Width="185px" DbSelectedDate='<%# Bind("DateOff") %>'>
+                                <Calendar EnableKeyboardNavigation="True" EnableWeekends="True" FastNavigationNextText="&amp;lt;&amp;lt;" Skin="Bootstrap" runat="server">
+                                </Calendar>
+                            </telerik:RadDatePicker>
+                        </EditItemTemplate>
+                        <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
+                        <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle"  Width="50%"/>
+                    </telerik:GridTemplateColumn>
+
+                    <telerik:GridBoundColumn DataField="Remarks" UniqueName="Remarks" HeaderText="Remarks"
                         MaxLength="50">
                         <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
                     <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                     </telerik:GridBoundColumn>
-                    <%--<telerik:GridButtonColumn 
+    
+                    <telerik:GridEditCommandColumn>
+                    </telerik:GridEditCommandColumn>
+                   
+                    <telerik:GridButtonColumn 
                         ConfirmText="Delete record?"
                         ConfirmDialogType="RadWindow"
                         ConfirmTitle="Delete"
@@ -164,7 +193,8 @@
                         
                         <HeaderStyle CssClass="rgHeader ButtonColumnHeader"></HeaderStyle>
                         <ItemStyle CssClass="ButtonColumn" />
-                    </telerik:GridButtonColumn>--%>
+                    </telerik:GridButtonColumn>
+
                 </Columns>
 
 <EditFormSettings>

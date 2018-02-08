@@ -13,7 +13,7 @@ Imports System
 Partial Class ClientList
     Inherits System.Web.UI.Page
     Public Sub LoadClients()
-        SqlQuery("SELECT ClientTbl.LastName,ClientTbl.FirstName,ClientTbl.MiddleName, DATE_FORMAT(patientteeth.examdate, '%M %d, %Y') AS examdate FROM clienttbl left outer JOIN patientteeth ON ClientTbl.clientID = patientteeth.clientID where clienttbl.isverified=1 GROUP BY clienttbl.clientID ORDER BY patientteeth.examdate DESC , ClientTbl.LastName")
+        SqlQuery("SELECT ClientTbl.LastName,ClientTbl.FirstName,ClientTbl.MiddleName,(Select IFNULL(max(DATE_FORMAT(patientteeth.examdate, '%M %d, %Y')), 'No records to display.')) as examdate FROM clienttbl LEFT OUTER JOIN  patientteeth ON ClientTbl.clientID = patientteeth.clientID WHERE clienttbl.isverified = 1 AND role = 'User' GROUP BY clienttbl.clientID ORDER BY clienttbl.lastname")
         RadGrid1.DataSource = dtCommon
         RadGrid1.DataBind()
     End Sub
@@ -27,7 +27,7 @@ Partial Class ClientList
         End If
     End Sub
     Public Sub SearchStudent()
-        SqlQuery("SELECT ClientTbl.LastName,ClientTbl.FirstName,ClientTbl.MiddleName,DATE_FORMAT(patientteeth.examdate, '%M %d, %Y') AS examdate FROM clienttbl LEFT OUTER JOIN patientteeth ON ClientTbl.clientID = patientteeth.clientID WHERE ClientTbl.clientid = patientteeth.clientid and (ClientTbl.LastName LIKE '" & RadTextBox1.Text & "%' OR ClientTbl.FirstName LIKE '" & RadTextBox1.Text & "%' OR ClientTbl.MiddleName LIKE '" & RadTextBox1.Text & "%') AND clienttbl.IsVerified = 1 ORDER BY patientteeth.examdate DESC , ClientTbl.LastName")
+        SqlQuery("SELECT ClientTbl.LastName,ClientTbl.FirstName,ClientTbl.MiddleName,(Select max(DATE_FORMAT(patientteeth.examdate, '%M %d, %Y'))) as examdate FROM clienttbl LEFT OUTER JOIN patientteeth ON ClientTbl.clientID = patientteeth.clientID WHERE (ClientTbl.LastName LIKE '" & RadTextBox1.Text & "%' OR ClientTbl.FirstName LIKE '" & RadTextBox1.Text & "%' OR ClientTbl.MiddleName LIKE '" & RadTextBox1.Text & "%') AND clienttbl.IsVerified = 1 AND role = 'User' ORDER BY patientteeth.examdate DESC , ClientTbl.LastName")
         RadGrid1.DataSource = dtCommon
         RadGrid1.DataBind()
     End Sub

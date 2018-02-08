@@ -6,9 +6,9 @@ Partial Class Diagnosis
     Protected Sub RadGrid1_NeedDataSource(sender As Object, e As GridNeedDataSourceEventArgs) Handles RadGrid1.NeedDataSource
         RadGrid1.DataSource = Nothing
         If RadTextBox1.Text = Nothing Then
-            SqlQuery("select clientid,LastName,FirstName,MiddleName from ClientTbl where IsVerified=1 order by LastName")
+            SqlQuery("select clientid,LastName,FirstName,MiddleName from ClientTbl where IsVerified=1 and role='User' order by LastName")
         Else
-            SqlQuery("select clientid,LastName,FirstName,MiddleName from ClientTbl where (LastName like '" & RadTextBox1.Text & "%' or FirstName like '" & RadTextBox1.Text & "%' or MiddleName like '" & RadTextBox1.Text & "%') and IsVerified=1 order by LastName")
+            SqlQuery("select clientid,LastName,FirstName,MiddleName from ClientTbl where (LastName like '" & RadTextBox1.Text & "%' or FirstName like '" & RadTextBox1.Text & "%' or MiddleName like '" & RadTextBox1.Text & "%') and IsVerified=1 and role='User' order by LastName")
         End If
         RadGrid1.DataSource = dtCommon
     End Sub

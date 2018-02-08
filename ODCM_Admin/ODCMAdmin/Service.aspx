@@ -150,6 +150,11 @@
                         <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
                     <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                     </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="Hours" UniqueName="Hours" HeaderText="Required Hours"
+                        MaxLength="50">
+                        <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" />
+                    </telerik:GridBoundColumn>
                     <telerik:GridEditCommandColumn>
                     </telerik:GridEditCommandColumn>
                     <telerik:GridButtonColumn 

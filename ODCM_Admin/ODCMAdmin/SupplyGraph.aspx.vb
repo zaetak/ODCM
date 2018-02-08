@@ -34,12 +34,27 @@ Partial Class SupplyGraph
         End If
     End Sub
 
+    'Public Sub OnClientSeriesClicked(sender As Object, e As EventArgs)
+    '    ShowGraphData("try")
+    'End Sub
+
+    Public Sub ShowGraphData(ByVal category As String)
+        If RadioButton1.Checked = True Then
+            TextBox1.Text = "IN"
+        End If
+        If RadioButton2.Checked = True Then
+            TextBox1.Text = "OUT"
+        End If
+        SqlQuery("SELECT  a.invoice,a.Itemname,b.Quantity,a.UOM,a.Category,b.stock,DATE_FORMAT(b.datestock,'%m/%d/%Y') as datestock FROM suppliestbl a,suppliesinouttbl b WHERE a.supplyid=b.supplyid and b.stock='" & TextBox1.Text & "' and a.category='" & category & "' and DATE_FORMAT(b.datestock,'%m/%d/%Y') between '" & Format(RadDatePicker1.SelectedDate, "MM/dd/YYYY") & "' and '" & Format(RadDatePicker2.SelectedDate, "MM/dd/YYYY") & "' ORDER BY b.datestock DESC")
+        RadGrid1.DataSource = dtCommon
+        RadGrid1.DataBind()
+        ModalPopupExtender1.Show()
+    End Sub
+
     Private Sub SupplyGraph_Load(sender As Object, e As EventArgs) Handles Me.Load
         If Not Me.Page.User.Identity.IsAuthenticated Then
             Response.Redirect("~/Account/Login.aspx")
         End If
-
-
         If IsPostBack = False Then
             Dim theDate As Date = Date.Now
             Dim yearLater As Date = theDate.AddYears(-1)
@@ -47,7 +62,7 @@ Partial Class SupplyGraph
             RadDatePicker2.SelectedDate = Date.Now
             Category.Text = "Yearly"
             RadioButton1.Checked = True
-            TextBox1.Text = "IN"
+            TextBox1.Text = "In"
             RadHtmlChart1.Visible = True
             RadHtmlChart1.DataSource = GetData()
             RadHtmlChart1.DataBind()
@@ -69,9 +84,9 @@ Partial Class SupplyGraph
         Dim d As CultureInfo = RadDatePicker2.Calendar.CultureInfo
         TextBox3.Text = d.Calendar.GetWeekOfYear(RadDatePicker2.SelectedDate, d.DateTimeFormat.CalendarWeekRule, d.DateTimeFormat.FirstDayOfWeek)
         If Category.Text = "Daily" Then
-            RadHtmlChart1.ChartTitle.Text = Category.Text & " Stock " & TextBox1.Text & " from " & Format(RadDatePicker1.SelectedDate, "MMMM dd, yyyy").ToString & " to " & Format(RadDatePicker2.SelectedDate, "MMMM dd, yyyy").ToString
-            SqlQuery("select a.id,b.itemname as 'Name',sum(a.quantity) as 'Quantity' from suppliesinouttbl a, suppliestbl b where a.supplyid=b.supplyid and a.stock='" & TextBox1.Text & "' and a.datestock between '" & Format(RadDatePicker1.SelectedDate, "yyyy-MM-dd") & "' and '" & Format(RadDatePicker2.SelectedDate, "yyyy-MM-dd") & "' group by b.itemname order by a.quantity")
-            RadHtmlChart1.ChartTitle.Appearance.TextStyle.FontFamily = "Century Gothic"
+            RadHtmlChart1.ChartTitle.Text = Category.Text & " Stock " & TextBox1.Text & " from " & Format(RadDatePicker1.SelectedDate, "MMMM dd, yyyy").ToString & " To " & Format(RadDatePicker2.SelectedDate, "MMMM dd, yyyy").ToString
+            SqlQuery("Select a.id, b.itemname as 'Name',sum(a.quantity) as 'Quantity' from suppliesinouttbl a, suppliestbl b where a.supplyid=b.supplyid and a.stock='" & TextBox1.Text & "' and a.datestock between '" & Format(RadDatePicker1.SelectedDate, "yyyy-MM-dd") & "' and '" & Format(RadDatePicker2.SelectedDate, "yyyy-MM-dd") & "' group by b.itemname order by a.quantity")
+        RadHtmlChart1.ChartTitle.Appearance.TextStyle.FontFamily = "Century Gothic"
             RadHtmlChart1.ChartTitle.Appearance.TextStyle.Bold = True
             RadHtmlChart1.ChartTitle.Appearance.TextStyle.FontSize = 18
         ElseIf Category.Text = "Weekly" Then
@@ -149,5 +164,6 @@ Partial Class SupplyGraph
             RadHtmlChart1.DataBind()
         End If
     End Sub
+
 
 End Class

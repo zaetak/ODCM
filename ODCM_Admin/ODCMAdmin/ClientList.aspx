@@ -91,7 +91,7 @@
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="ExamDate" 
                     FilterControlAltText="Filter column5 column" HeaderText="Last Visit" 
-                    ReadOnly="True" UniqueName="ExamDate">
+                    ReadOnly="True" UniqueName="ExamDate" EmptyDataText="No records to display.">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
                     <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>

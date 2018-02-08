@@ -3,6 +3,15 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <style type ="text/css">
+
+          .ModalBackground
+{
+    background-color:Gray;
+    filter: alpha(opacity=70);
+    opacity: 0.7;
+    z-index: 999;
+    
+}
         .innerTableCell
         {
           text-align:center;
@@ -58,7 +67,15 @@
             }
 
         })(window);
-    </script>
+
+        function callBackFn(arg) {
+            window.location.href = "PatientRecord.aspx";
+            return false;
+        }
+  
+      </script>
+       <telerik:RadWindowManager RenderMode="Lightweight" ID="RadWindowManager2" Font-Names="Century Gothic" runat="server"/>
+     
     <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <h2 style="font-family: 'Century Gothic'; font-weight: bold;" class ="text-center">PATIENT CHART</h2>
     <telerik:RadToolTipManager RenderMode="Lightweight" runat="server" ID="RadToolTip5" ShowEvent="OnMouseOver" OnClientShow="OnClientShow"
@@ -74,45 +91,45 @@
                    <asp:Table ID="Table3" runat="server" Width="100%" Height="50px"  align = "right">
                    <asp:TableRow>
                     <asp:TableCell ID="teeth55" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                          <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=55">55</a>
+                          <a runat="server" id="sample55">55</a>
                           <img src="../Images/teeth/4a.png">
                   </asp:TableCell>
                    <asp:TableCell ID="teeth54" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                                <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=54">54</a>
+                                <a runat="server" id="sample54">54</a>
                                 <img src="../Images/teeth/5a.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth53" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                                <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=53">53</a>
+                                <a runat="server" id="sample53">53</a>
                                 <img src="../Images/teeth/6a.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth52" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=52">52</a>
+                        <a runat="server" id="sample52">52</a>
                         <img src="../Images/teeth/7a.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth51" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=51">51</a>
+                        <a runat="server" id="sample51">51</a>
                         <img src="../Images/teeth/8a.png">
                     </asp:TableCell> 
                    </asp:TableRow>
                    <asp:TableRow>
                     <asp:TableCell ID="teeth85" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=85">85</a>
+                        <a runat="server" id="sample85">85</a>
                         <img src="../Images/teeth/4b.png">
                     </asp:TableCell>
                    <asp:TableCell ID="teeth84" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=84">84</a>
+                        <a runat="server" id="sample84">84</a>
                         <img src="../Images/teeth/5b.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth83" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=83">83</a>
+                        <a runat="server" id="sample83">83</a>
                         <img src="../Images/teeth/6b.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth82" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=82">82</a>
+                        <a runat="server" id="sample82">82</a>
                         <img src="../Images/teeth/7b.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth81" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=81">81</a>
+                        <a runat="server" id="sample81">81</a>
                         <img src="../Images/teeth/8b.png">
                     </asp:TableCell> 
                    </asp:TableRow>
@@ -122,45 +139,45 @@
                    <asp:Table ID="Table4" runat="server" Width="100%"  Height="50px">
                      <asp:TableRow>
                     <asp:TableCell ID="teeth61" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=61">61</a>
+                        <a runat="server" id="sample61">61</a>
                         <img src="../Images/teeth/9a.png">
                     </asp:TableCell>
                    <asp:TableCell ID="teeth62" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=62">62</a>
+                        <a runat="server" id="sample62">62</a>
                         <img src="../Images/teeth/10a.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth63" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=63">63</a>
+                        <a runat="server" id="sample63">63</a>
                         <img src="../Images/teeth/11a.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth64" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=64">64</a>
+                        <a runat="server" id="sample64">64</a>
                         <img src="../Images/teeth/12a.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth65" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=65">65</a>
+                        <a runat="server" id="sample65">65</a>
                         <img src="../Images/teeth/13a.png">
                     </asp:TableCell> 
                    </asp:TableRow>
                         <asp:TableRow>
                     <asp:TableCell ID="teeth71" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=71">71</a>
+                        <a runat="server" id="sample71">71</a>
                         <img src="../Images/teeth/9b.png">
                     </asp:TableCell>
                    <asp:TableCell ID="teeth72" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=72">72</a>
+                        <a runat="server" id="sample72">72</a>
                         <img src="../Images/teeth/10b.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth73" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=73">73</a>
+                        <a runat="server" id="sample73">73</a>
                         <img src="../Images/teeth/11b.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth74" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=74">74</a>
+                        <a runat="server" id="sample74">74</a>
                         <img src="../Images/teeth/12b.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth75" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=75">75</a>
+                        <a runat="server" id="sample75">75</a>
                         <img src="../Images/teeth/13b.png">
                     </asp:TableCell> 
                    </asp:TableRow>
@@ -175,69 +192,69 @@
                    <asp:Table ID="Table2" runat="server" Width="90%" Height="100%"  align = "right">
                    <asp:TableRow Height="100%">
                     <asp:TableCell ID="teeth18" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell" Height="100%">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=18">18</a>
+                        <a runat="server" id="sample18">18</a>
                         <img src="../Images/teeth/1a.png">
                     </asp:TableCell>
                    <asp:TableCell ID="teeth17" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=17">17</a>
+                        <a runat="server" id="sample17">17</a>
                         <img src="../Images/teeth/2a.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth16" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=16">16</a>
+                        <a runat="server" id="sample16">16</a>
                         <img src="../Images/teeth/3a.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth15" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=15">15</a>
+                        <a runat="server" id="sample15">15</a>
                         <img src="../Images/teeth/4a.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth145" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=14">14</a>
+                        <a runat="server" id="sample14">14</a>
                         <img src="../Images/teeth/5a.png">
                     </asp:TableCell> 
                     <asp:TableCell ID="teeth13" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=13">13</a>
+                        <a runat="server" id="sample13">13</a>
                         <img src="../Images/teeth/6a.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth12" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=12">12</a>
+                        <a runat="server" id="sample12">12</a>
                         <img src="../Images/teeth/7a.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth11" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=11">11</a>
+                        <a runat="server" id="sample11">11</a>
                         <img src="../Images/teeth/8a.png">
                     </asp:TableCell> 
                    </asp:TableRow>
                     <asp:TableRow>
                     <asp:TableCell ID="teeth48" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=48">48</a>
+                        <a runat="server" id="sample48">48</a>
                         <img src="../Images/teeth/1b.png">
                     </asp:TableCell>
                    <asp:TableCell ID="teeth47" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=47">47</a>
+                        <a runat="server" id="sample47">47</a>
                         <img src="../Images/teeth/2b.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth46" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=46">46</a>
+                        <a runat="server" id="sample46">46</a>
                         <img src="../Images/teeth/3b.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth45" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=45">45</a>
+                        <a runat="server" id="sample45">45</a>
                         <img src="../Images/teeth/4b.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth44" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=44">44</a>
+                        <a runat="server" id="sample44">44</a>
                         <img src="../Images/teeth/5b.png">
                     </asp:TableCell> 
                     <asp:TableCell ID="teeth43" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=43">43</a>
+                        <a runat="server" id="sample43">43</a>
                         <img src="../Images/teeth/6b.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth42" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=42">42</a>
+                        <a runat="server" id="sample42">42</a>
                         <img src="../Images/teeth/7b.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth41" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=41">41</a>
+                        <a runat="server" id="sample41">41</a>
                         <img src="../Images/teeth/8b.png">
                     </asp:TableCell> 
                    </asp:TableRow>
@@ -247,69 +264,69 @@
                    <asp:Table ID="Table5" runat="server" Width="90%" Height="100%">
                      <asp:TableRow Height="100%">
                     <asp:TableCell ID="teeth21" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=21">21</a>
+                        <a runat="server" id="sample21">21</a>
                         <img src="../Images/teeth/9a.png">
                     </asp:TableCell>
                    <asp:TableCell ID="teeth22" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=22">22</a>
+                        <a runat="server" id="sample22">22</a>
                         <img src="../Images/teeth/10a.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth23" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=23">23</a>
+                        <a runat="server" id="sample23">23</a>
                         <img src="../Images/teeth/11a.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth24" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=24">24</a>
+                        <a runat="server" id="sample24">24</a>
                         <img src="../Images/teeth/12a.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth25" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=25">25</a>
+                        <a runat="server" id="sample25">25</a>
                         <img src="../Images/teeth/13a.png">
                     </asp:TableCell> 
                     <asp:TableCell ID="teeth26" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=26">26</a>
+                        <a runat="server" id="sample26">26</a>
                         <img src="../Images/teeth/14a.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth27" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=27">27</a>
+                        <a runat="server" id="sample27">27</a>
                         <img src="../Images/teeth/15a.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth28" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=28">28</a>
+                        <a runat="server" id="sample28">28</a>
                         <img src="../Images/teeth/16a.png">
                     </asp:TableCell> 
                    </asp:TableRow>
                         <asp:TableRow>
                     <asp:TableCell ID="teeth31" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=31">31</a>
+                        <a runat="server" id="sample31">31</a>
                         <img src="../Images/teeth/9b.png">
                     </asp:TableCell>
                    <asp:TableCell ID="teeth32" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=32">32</a>
+                        <a runat="server" id="sample32">32</a>
                         <img src="../Images/teeth/10b.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth33" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=33">33</a>
+                        <a runat="server" id="sample33">33</a>
                         <img src="../Images/teeth/11b.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth34" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)" CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=34">34</a>
+                        <a runat="server" id="sample34">34</a>
                         <img src="../Images/teeth/12b.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth35" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)"  CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=35">35</a>
+                        <a runat="server" id="sample35">35</a>
                         <img src="../Images/teeth/13b.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth36" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)"  CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=36">36</a>
+                        <a runat="server" id="sample36">36</a>
                         <img src="../Images/teeth/14b.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth37" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)"  CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=37">37</a>
+                        <a runat="server" id="sample37">37</a>
                         <img src="../Images/teeth/15b.png">
                     </asp:TableCell>
                     <asp:TableCell ID="teeth38" runat="server" onfocus="Hilite(this)" onblur="Hilite(this, false)"  CssClass ="innerTableCell">
-                        <a runat="server" href="~/ODCMAdmin/Orthodontics.aspx?PatientTeethID=38">38</a>
+                        <a runat="server" id="sample38">38</a>
                         <img src="../Images/teeth/16b.png">
                     </asp:TableCell> 
                    </asp:TableRow>
@@ -331,8 +348,7 @@
                     Last Name:</telerik:RadLabel>
             </td>
             <td style="width: 235px; height: 37px">
-                <telerik:RadLabel ID="LastName" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
-                    Last Name:</telerik:RadLabel>
+                <telerik:RadLabel ID="LastName" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap"></telerik:RadLabel>
             </td>
             <td class="text-right" style="width: 208px; height: 37px;">
                 <telerik:RadLabel ID="RadLabel7" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
@@ -340,7 +356,7 @@
             </td>
             <td style="height: 37px; width: 302px;">
                 <telerik:RadLabel ID="Sex" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
-                    Last Name:</telerik:RadLabel>
+                    </telerik:RadLabel>
             </td>
             <td style="height: 37px"></td>
         </tr>
@@ -352,7 +368,7 @@
             </td>
             <td style="width: 235px; height: 37px">
                 <telerik:RadLabel ID="FirstName" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
-                    Last Name:</telerik:RadLabel>
+                    </telerik:RadLabel>
             </td>
             <td style="width: 208px; height: 37px;" class="text-right">
                 <telerik:RadLabel ID="RadLabel8" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
@@ -360,7 +376,7 @@
             </td>
             <td style="width: 302px; height: 37px;">
                 <telerik:RadLabel ID="Nickname" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
-                    Last Name:</telerik:RadLabel>
+                    </telerik:RadLabel>
             </td>
             <td style="height: 37px"></td>
         </tr>
@@ -372,7 +388,7 @@
             </td>
             <td style="width: 235px; height: 37px">
                 <telerik:RadLabel ID="MiddleName" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
-                    Last Name:</telerik:RadLabel>
+                    </telerik:RadLabel>
             </td>
             <td style="width: 208px" class="text-right">
                 <telerik:RadLabel ID="RadLabel9" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
@@ -380,7 +396,7 @@
             </td>
             <td style="width: 302px">
                 <telerik:RadLabel ID="HomeNo" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
-                    Last Name:</telerik:RadLabel>
+                    </telerik:RadLabel>
             </td>
             <td>&nbsp;</td>
         </tr>
@@ -392,7 +408,7 @@
             </td>
             <td style="width: 235px; height: 37px">
                 <telerik:RadLabel ID="Birthdate" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
-                    Last Name:</telerik:RadLabel>
+                    </telerik:RadLabel>
             </td>
             <td style="width: 208px" class="text-right">
                 <telerik:RadLabel ID="RadLabel11" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
@@ -400,7 +416,7 @@
             </td>
             <td style="width: 302px">
                 <telerik:RadLabel ID="OfficeNo" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
-                    Last Name:</telerik:RadLabel>
+                    </telerik:RadLabel>
             </td>
             <td>&nbsp;</td>
         </tr>
@@ -412,7 +428,7 @@
             </td>
             <td style="width: 235px; height: 37px">
                 <telerik:RadLabel ID="Age" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
-                    Last Name:</telerik:RadLabel>
+                    </telerik:RadLabel>
             </td>
             <td style="width: 208px" class="text-right">
                 <telerik:RadLabel ID="RadLabel13" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
@@ -420,7 +436,7 @@
               </td>
             <td style="width: 302px">
                 <telerik:RadLabel ID="FaxNo" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
-                    Last Name:</telerik:RadLabel>
+                    </telerik:RadLabel>
               </td>
             <td>&nbsp;</td>
         </tr>
@@ -432,7 +448,7 @@
             </td>
             <td style="width: 235px; height: 37px">
                 <telerik:RadLabel ID="Religion" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
-                    Last Name:</telerik:RadLabel>
+                    </telerik:RadLabel>
             </td>
             <td style="width: 208px" class="text-right">
                 <telerik:RadLabel ID="RadLabel15" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
@@ -440,7 +456,7 @@
               </td>
             <td style="width: 302px">
                 <telerik:RadLabel ID="PhoneNumber" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
-                    Last Name:</telerik:RadLabel>
+                    </telerik:RadLabel>
               </td>
             <td>&nbsp;</td>
         </tr>
@@ -452,7 +468,7 @@
             </td>
             <td style="width: 235px; height: 37px">
                 <telerik:RadLabel ID="Nationality" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
-                    Last Name:</telerik:RadLabel>
+                    </telerik:RadLabel>
             </td>
             <td style="width: 208px" class="text-right">
                 <telerik:RadLabel ID="RadLabel17" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
@@ -460,7 +476,7 @@
               </td>
             <td style="width: 302px">
                 <telerik:RadLabel ID="EmailAddr" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
-                    Last Name:</telerik:RadLabel>
+                    </telerik:RadLabel>
               </td>
             <td>&nbsp;</td>
         </tr>
@@ -472,7 +488,7 @@
             </td>
             <td style="width: 235px; height: 37px">
                 <telerik:RadLabel ID="HomeAddr" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
-                    Last Name:</telerik:RadLabel>
+                    </telerik:RadLabel>
             </td>
             <td style="width: 208px" class="text-right">
                 <telerik:RadLabel ID="RadLabel19" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
@@ -480,7 +496,7 @@
               </td>
             <td style="width: 302px">
                 <telerik:RadLabel ID="EffectiveDate" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
-                    Last Name:</telerik:RadLabel>
+                    </telerik:RadLabel>
               </td>
             <td>&nbsp;</td>
         </tr>
@@ -492,7 +508,7 @@
             </td>
             <td style="width: 235px; height: 37px">
                 <telerik:RadLabel ID="Occupation" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
-                    Last Name:</telerik:RadLabel>
+                    </telerik:RadLabel>
             </td>
             <td style="width: 208px" class="text-right">
                 <telerik:RadLabel ID="RadLabel21" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
@@ -500,7 +516,7 @@
               </td>
             <td style="width: 302px">
                 <telerik:RadLabel ID="DentalInsurance" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
-                    Last Name:</telerik:RadLabel>
+                    </telerik:RadLabel>
               </td>
             <td>&nbsp;</td>
         </tr>
@@ -524,7 +540,7 @@
             </td>
             <td style="width: 235px; height: 37px">
                 <telerik:RadLabel ID="Guardian" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
-                    Last Name:</telerik:RadLabel>
+                    </telerik:RadLabel>
             </td>
             <td style="width: 208px" class="text-right">
                 <telerik:RadLabel ID="RadLabel24" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
@@ -532,7 +548,7 @@
               </td>
             <td style="width: 302px">
                 <telerik:RadLabel ID="GOccupation" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
-                    Last Name:</telerik:RadLabel>
+                    </telerik:RadLabel>
               </td>
             <td>&nbsp;</td>
         </tr>
@@ -552,30 +568,24 @@
     </telerik:RadAjaxManager>
     <telerik:RadAjaxLoadingPanel runat="server" ID="RadAjaxLoadingPanel1" Skin="Bootstrap" />
 
-  <telerik:RadGrid RenderMode="Lightweight" ID="RadGrid1" AllowSorting="True" Width="90%" OnNeedDataSource="RadGrid1_NeedDataSource" runat="server" AutoGenerateColumns="False" GroupPanelPosition="Top" Skin="Bootstrap" Font-Names="Century Gothic">
+  <telerik:RadGrid RenderMode="Lightweight" ID="RadGrid1" AllowSorting="True" Width="90%" OnNeedDataSource="RadGrid1_NeedDataSource" AllowPaging="True" runat="server" AutoGenerateColumns="False" GroupPanelPosition="Top" Skin="Bootstrap" Font-Names="Century Gothic">
             <FooterStyle Font-Names="Century Gothic" />
-            <HeaderStyle Font-Names="Century Gothic" Font-Size="Medium" />
+            <HeaderStyle Font-Names="Century Gothic" />
             <CommandItemStyle Font-Names="Century Gothic" />
             <ActiveItemStyle Font-Names="Century Gothic" />
-            <ItemStyle Font-Names="Century Gothic" Font-Size="Medium" />
+            <ItemStyle Font-Names="Century Gothic"/>
             <PagerStyle Mode="NextPrevAndNumeric" Font-Names="Century Gothic"></PagerStyle>
 <GroupingSettings CollapseAllTooltip="Collapse all groups"></GroupingSettings>
-
-            <AlternatingItemStyle Font-Names="Century Gothic" />
-            <MasterTableView Width="100%" CommandItemDisplay="Top"
+    <MasterTableView Width="100%" CommandItemDisplay="Top"
                 DataKeyNames="ID" InsertItemDisplay="Top"
                 InsertItemPageIndexAction="ShowItemOnFirstPage">
                 <CommandItemSettings ShowAddNewRecordButton="false" />
                 <Columns>
                     <telerik:GridTemplateColumn FilterControlAltText="Filter TemplateColumn column" UniqueName="TemplateColumn">
-
                         <ItemTemplate>
-                            <asp:Label runat="server" ID="lblRowNumber" Text='<%# Container.DataSetIndex+1 %>'></asp:Label>
+                                <asp:Label runat="server" ID="lblRowNumber" Text='<%# Container.DataSetIndex + 1 %>'></asp:Label>
                          </ItemTemplate>
-
-                        <HeaderStyle Width="50px"></HeaderStyle>
-                        <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" />
-
+                        <ItemStyle HorizontalAlign="Right" />
                     </telerik:GridTemplateColumn>
                     <telerik:GridBoundColumn DataField="ID" 
                     FilterControlAltText="Filter column column" HeaderText="Last Name" 
@@ -585,9 +595,9 @@
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="TeethID" 
                     FilterControlAltText="Filter column column" HeaderText="Teeth Number" 
-                    ReadOnly="True" UniqueName="column">
+                    ReadOnly="True" UniqueName="TeethID">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="Service" 
                     FilterControlAltText="Filter column1 column" HeaderText="Service" 
@@ -607,10 +617,10 @@
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
                     <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
-                     <telerik:GridButtonColumn HeaderText="View History" ItemStyle-Width="170px" ButtonType="ImageButton" CommandName="View" ImageUrl="~/Images/View.png">
+                   <%--  <telerik:GridButtonColumn HeaderText="View History" ItemStyle-Width="170px" ButtonType="ImageButton" CommandName="View" ImageUrl="~/Images/View.png">
                      <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                        </telerik:GridButtonColumn>
+                        </telerik:GridButtonColumn>--%>
             </Columns>
          </MasterTableView>
             <SelectedItemStyle Font-Names="Century Gothic" />
@@ -618,5 +628,21 @@
 <HeaderContextMenu RenderMode="Lightweight"></HeaderContextMenu>
     </telerik:RadGrid>
     </center>
+     <asp:Button ID="Button1" runat="server" 
+                    style="font-family: 'Segoe UI'; font-size: medium;display:none;" Text="Add" Width="93px" 
+                    Height="33px"/>
+      <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" TargetControlID="Button1" PopupControlID="ModalPanel"
+                                CancelControlID="CloseButton" BackgroundCssClass="ModalBackground">
+                        </asp:ModalPopupExtender>
+
+    <asp:Panel ID="ModalPanel" runat="server" Width="74%" 
+                    style="border: 3px solid Black; background-color:#FFFFFF; padding-top:5px; padding-left:5px;padding-right:5px;padding-bottom:5px;display:none;" 
+                    Height="655px">
+                   <iframe style=" width: 100%; height: 600px;overflow:auto" id="ifrm1" runat="server"></iframe>
+        <br />
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <telerik:RadButton ID="CloseButton" runat="server" Font-Bold="True" Skin="Bootstrap" Text="Close" Width="84px">
+                                </telerik:RadButton>
+</asp:Panel>
 </asp:Content>
 

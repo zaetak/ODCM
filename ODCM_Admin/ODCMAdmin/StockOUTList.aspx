@@ -27,22 +27,18 @@
                height: 41px;
                width: 662px;
            }
-           .auto-style7 {
-               height: 41px;
-               width: 22px;
-           }
-           
+                      
 
                      .auto-style74 {
                          height: 41px;
-                         width: 91px;
+                         width: 179px;
                      }
                      .auto-style83 {
                          width: 100%;
                          height: 76px;
                      }
                      .auto-style88 {
-                         width: 91px;
+                         width: 179px;
                          text-align: right;
                          height: 40px;
                      }
@@ -51,21 +47,8 @@
                          text-align: left;
                          height: 40px;
                      }
-                     .auto-style92 {
-                         height: 41px;
-                         width: 17px;
-                     }
-                       .auto-style95 {
-                           width: 22px;
-                           height: 104px;
-                       }
-                       .auto-style96 {
-                           width: 17px;
-                           text-align: right;
-                           height: 104px;
-                       }
                        .auto-style97 {
-                           width: 91px;
+                           width: 179px;
                            text-align: right;
                            height: 104px;
                        }
@@ -74,32 +57,18 @@
                            text-align: right;
                            height: 104px;
                        }
-                       .auto-style102 {
-                           width: 17px;
-                           text-align: right;
-                           height: 56px;
-                       }
                        .auto-style103 {
-                           width: 91px;
+                           width: 179px;
                            text-align: right;
                            height: 56px;
-                       }
-                       .auto-style105 {
-                           height: 56px;
-                           width: 22px;
                        }
                        .auto-style109 {
                            height: 56px;
                            width: 662px;
                        }
-                       .auto-style115 {
-                           width: 17px;
-                           text-align: right;
-                           height: 40px;
-                       }
-                       .auto-style116 {
-                           width: 22px;
-                           height: 40px;
+                       .auto-style117 {
+                           height: 56px;
+                           width: 962px;
                        }
                        </style>
     <script type="text/javascript">
@@ -111,34 +80,34 @@
     <h2 style="font-family: 'Century Gothic'; font-weight: bold;" class ="text-center">STOCK OUT INFORMATION CONTROL</h2>
     <table class="auto-style83">
         <tr>
-            <td class="auto-style7"></td>
-            <td class="auto-style92">
-          
-            </td>
             <td class="auto-style74"></td>
-            <td class="auto-style3">&nbsp;</td>
+            <td class="auto-style3" colspan="2">&nbsp;</td>
         </tr>
         <tr>
-            <td class="auto-style105"></td>
-            <td class="auto-style102"> </td>
             <td class="auto-style103">
                 <telerik:RadLabel ID="RadLabel2" runat="server" Skin="Bootstrap" style="font-size: large" Font-Bold="True" Font-Names="Century Gothic" Font-Size="Medium">
                     Service:</telerik:RadLabel>
             </td>
-            <td class="auto-style109">
+            <td class="auto-style117">
                 <telerik:RadComboBox ID="Service" Runat="server" Font-Names="Century Gothic" Font-Size="Medium" Width="334px" Skin="Bootstrap" AutoPostBack="True">
                    
                 </telerik:RadComboBox>
              </td>
+            <td class="auto-style109">
+              
+                   <strong>
+                <telerik:RadButton ID="RadButton1" runat="server" Font-Bold="True" Font-Names="Century Gothic" Height="25px" style="font-size: 16px; margin-top: 0px" Text="Print" Width="117px" Skin="Bootstrap" BorderColor="#666666" CssClass="auto-style2" Target="_blank">
+                </telerik:RadButton>
+                </strong>
+              
+             </td>
         </tr>
         <tr>
-            <td class="auto-style95"></td>
-            <td class="auto-style96"> </td>
             <td class="auto-style97">
                 <telerik:RadLabel ID="RadLabel7" runat="server" Skin="Bootstrap" style="font-size: large" Font-Bold="True" Font-Names="Century Gothic" Font-Size="Medium">
                     Supplies:</telerik:RadLabel>
             </td>
-            <td class="auto-style98">
+            <td class="auto-style98" colspan="2">
           <telerik:RadAjaxManager runat="server" ID="RadAjaxManager1" DefaultLoadingPanelID="RadAjaxLoadingPanel1">
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="RadGrid1">
@@ -223,11 +192,9 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style116">&nbsp;</td>
-            <td class="auto-style115"> &nbsp;</td>
             <td class="auto-style88">
                 &nbsp;</td>
-            <td class="auto-style89">
+            <td class="auto-style89" colspan="2">
                 <center>
                 </center>
             </td>

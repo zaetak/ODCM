@@ -18,61 +18,22 @@ Partial Class Reservation
         Dim userid As String = dtCommon.Rows(0).Item(0).ToString
         SqlQuery("select id from servicestbl where serviceoffered='" & Service.Text & "'")
         Dim ServiceID As String = dtCommon.Rows(0).Item(0).ToString
-        SqlQuery("insert into reservationtbl(clientid,datereserved,timereserved,serviceid,remarks,status) values('" & userid & "','" & Format(RadDatePicker1.SelectedDate, "yyyy-MM-dd") & "','" & RadTimePicker1.SelectedTime.ToString & "','" & ServiceID & "','" & RadTextBox1.Text & "','Pending')")
+        SqlQuery("insert into reservationtbl(clientid,datereserved,timereserved,serviceid,remarks,status) values('" & userid & "','" & Format(RadDatePicker1.SelectedDate, "yyyy-MM-dd") & "','" & lbltime.Text & "','" & ServiceID & "','" & RadTextBox1.Text & "','Pending')")
         RadWindowManager1.RadAlert("Reservation Added Successfully.", 330, 180, "DENTCAST", "callBackFn", "/Images/Success.png")
     End Sub
 
-    Dim TimeSlot As String() = New String() {8, 11, 14, 17}
-    Dim TimeSlot1 As List(Of String) = TimeSlot.ToList()
-    Dim TimeSlot2 As String() = {"0"}
-
-
-    Public Sub ReservationLookUp()
-        SqlQuery("select CAST(DATE_FORMAT(timereserved, '%H') AS UNSIGNED)  from reservationtbl where datereserved='" & Format(RadDatePicker1.SelectedDate, "yyyy-MM-dd") & "' AND (status = 'Pending' or status= 'Approved')")
-        For x As Integer = 0 To dtCommon.Rows.Count - 1
-            For y As Integer = 0 To TimeSlot1.Count - 1
-                If dtCommon.Rows(x).Item(0) = TimeSlot1(y) Then
-                    TimeSlot1.Remove(TimeSlot(y))
-                    Exit For
-                End If
-            Next
-        Next
-        Dim count As Integer
-        For z As Integer = 0 To TimeSlot1.Count
-            Try
-                TimeSlot2 = TimeSlot2.Concat({TimeSlot1(z) & "," & TimeSlot1(z) & ",0,0"}).ToArray
-                count = count + 1
-            Catch ex As Exception
-                TimeSlot2 = TimeSlot2.Concat({"-,-,-,-"}).ToArray
-            End Try
-        Next
-        If count = 4 Then
-            RadTimePicker1.TimeView.CustomTimeValues = New String() {TimeSlot2(1), TimeSlot2(2), TimeSlot2(3), TimeSlot2(4)}
-        ElseIf count = 3 Then
-            RadTimePicker1.TimeView.CustomTimeValues = New String() {TimeSlot2(1), TimeSlot2(2), TimeSlot2(3)}
-        ElseIf count = 2 Then
-            RadTimePicker1.TimeView.CustomTimeValues = New String() {TimeSlot2(1), TimeSlot2(2)}
-        ElseIf count = 1 Then
-            RadTimePicker1.TimeView.CustomTimeValues = New String() {TimeSlot2(1)}
-        ElseIf count = 0 Then
-            RadTimePicker1.TimeView.Enabled = False
-        End If
-        RadTimePicker1.TimeView.Columns = 4
-
-    End Sub
     Private Sub Reservation_Load(sender As Object, e As EventArgs) Handles Me.Load
         If Not Me.Page.User.Identity.IsAuthenticated Then
             Response.Redirect("~/Account/Login.aspx")
         End If
+
         If IsPostBack = False Then
             LoadService()
             LoadSchedule()
         End If
     End Sub
 
-    Private Sub RadDatePicker1_SelectedDateChanged(sender As Object, e As SelectedDateChangedEventArgs) Handles RadDatePicker1.SelectedDateChanged
-        ReservationLookUp()
-    End Sub
+
 
     Public Sub LoadSchedule()
         RadScheduler1.DataStartField = Format(Date.Now, "yyyy-MM-dd")
@@ -80,7 +41,7 @@ Partial Class Reservation
         RadScheduler1.DataKeyField = "Key"
         RadScheduler1.DataSubjectField = "Subject"
         RadScheduler1.DataDescriptionField = "Description"
-        SqlQuery("select a.serviceoffered,CONCAT(b.datereserved,' ',b.timereserved),b.remarks from servicestbl a,reservationtbl b where a.id=b.serviceid")
+        SqlQuery("select a.serviceoffered,CONCAT(b.datereserved,' ',b.timereserved),b.remarks,a.hours from servicestbl a,reservationtbl b where a.id=b.serviceid")
         For x As Integer = 0 To dtCommon.Rows.Count - 1
             Dim mAppointment = New Appointment
             mAppointment.Subject = dtCommon.Rows(x).Item(0)
@@ -88,7 +49,7 @@ Partial Class Reservation
             mAppointment.ToolTip = dtCommon.Rows(x).Item(2)
             Dim DStart, DEnd As Date
             DStart = Format(CDate(dtCommon.Rows(x).Item(1)), "yyyy-MM-dd HH:mm:ss")
-            DEnd = DStart.AddHours(3)
+            DEnd = DStart.AddHours(dtCommon.Rows(x).Item(3))
             mAppointment.Start = DStart
             mAppointment.End = DEnd
             mAppointment.BackColor = Drawing.Color.DarkViolet
@@ -102,8 +63,26 @@ Partial Class Reservation
     Private Sub RadScheduler1_FormCreating(sender As Object, e As SchedulerFormCreatingEventArgs) Handles RadScheduler1.FormCreating
         e.Cancel = True
         RadDatePicker1.SelectedDate = e.Appointment.Start
-        ReservationLookUp()
-        RadTimePicker1.Focus()
+        lbltime.Text = Nothing
+        lblservice1.Text = Nothing
+        lbltime.Text = e.Appointment.Start.Hour.ToString("00") & ":" & e.Appointment.Start.Minute.ToString("00")
+        RadTextBox1.Focus()
+        SqlQuery("select remarks from dayofftbl where dateoff='" & Format(RadDatePicker1.SelectedDate, "yyyy-MM-dd") & "'")
+        If dtCommon.Rows.Count > 0 Then
+            lblremarks.Text = dtCommon.Rows(0).Item(0)
+            ModalPopupExtender2.Show()
+        Else
+            ModalPopupExtender1.Show()
+        End If
+    End Sub
+
+    Private Sub Service_SelectedIndexChanged(sender As Object, e As RadComboBoxSelectedIndexChangedEventArgs) Handles Service.SelectedIndexChanged
+        SqlQuery("select hours from servicestbl where serviceoffered='" & Service.Text & "'")
+        lblservice.Text = dtCommon.Rows(0).Item(0)
+        lblservice1.Text = "Hours"
+        Dim a As DateTime
+        a = Convert.ToDateTime(lbltime.Text)
+        lbltime1.Text = Format(a.AddHours(lblservice.Text), "HH:mm")
         ModalPopupExtender1.Show()
     End Sub
 End Class

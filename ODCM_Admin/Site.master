@@ -272,6 +272,7 @@
                            <ul class="dropdown-menu">
                                 <li><a runat="server" href="~/ODCMUser/Reservation">Schedule Appointment</a></li>
                                 <li><a runat="server" href="~/ODCMUser/Schedule">View Schedule</a></li>
+                                
                             </ul>
                         </li>
 
@@ -282,6 +283,7 @@
                                   <!--  <div id="noti_Counter"></div>   SHOW NOTIFICATIONS COUNT.-->
                                 </li>
                                 <li><a runat="server" href="~/ODCMAdmin/Diagnosis">Patient Diagnosis</a></li>
+                                <li><a runat="server" href="~/ODCMAdmin/Dayoff">Edit Reservation</a></li>
                             </ul>
                         </li>
 

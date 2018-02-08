@@ -195,7 +195,13 @@ Partial Class SupplyList
             Category1.Items.Add(dtCommon.Rows(x).Item(0).ToString)
         Next
 
-        SqlQuery("insert into suppliestbl(invoice,itemname,quantity,category,uom,supplier,expidate) values('" & Invoice.TextBoxControl.Text & "','" & ItemName.TextBoxControl.Text & "','" & Quantity.TextBoxControl.Text & "','" & Category1.Text & "','" & UOM1.Text & "','" & Supplier.TextBoxControl.Text & "','" & Format(ExpiDate1.SelectedDate, "yyyy-MM-dd") & "')")
+        SqlQuery("select uom_name from uom where uom_name='" & UOM1.Text & "'")
+        If dtCommon.Rows.Count = 0 Then
+            SqlQuery("insert into uom(uom_name) values('" & UOM1.Text & "')")
+        End If
+
+
+        SqlQuery("insert into suppliestbl(invoice, ItemName, Quantity, Category, UOM, Supplier, ExpiDate) values('" & Invoice.TextBoxControl.Text & "','" & ItemName.TextBoxControl.Text & "','" & Quantity.TextBoxControl.Text & "','" & Category1.Text & "','" & UOM1.Text & "','" & Supplier.TextBoxControl.Text & "','" & Format(ExpiDate1.SelectedDate, "yyyy-MM-dd") & "')")
         RadGrid1.MasterTableView.ClearEditItems()
         RadGrid1.MasterTableView.IsItemInserted = False
         RadGrid1.MasterTableView.Rebind()

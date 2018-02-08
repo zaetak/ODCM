@@ -156,7 +156,7 @@
                     <telerik:RadComboBox ID="List1" runat="server" RenderMode="Lightweight" Skin="Bootstrap" Width="185px"/>
                 </EditItemTemplate>
                   <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                     </telerik:GridTemplateColumn>
              <telerik:GridTemplateColumn UniqueName="DateReserved" HeaderText="Date Reserved" ItemStyle-Width="240px">
                  
@@ -171,7 +171,7 @@
                 </telerik:RadDatePicker>
                 </EditItemTemplate>
                   <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                     </telerik:GridTemplateColumn>
 
             <telerik:GridTemplateColumn UniqueName="TimeReserved" HeaderText="Time Reserved" ItemStyle-Width="240px">
@@ -185,7 +185,7 @@
                 </telerik:RadTimePicker>
                 </EditItemTemplate>
                   <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                     </telerik:GridTemplateColumn>
                      <telerik:GridBoundColumn DataField="Remarks" UniqueName="Remarks" HeaderText="Remarks">
                         <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />

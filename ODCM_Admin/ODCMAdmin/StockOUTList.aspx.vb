@@ -1,7 +1,23 @@
 ﻿Imports SQLUtilities.LabelmanUtilities
 Imports Telerik.Web.UI
+Imports System.Drawing
+Imports Microsoft.VisualBasic
+Imports System
+Imports System.IO
+Imports System.Collections
+Imports Telerik.Web.UI.Calendar
+Imports System.Net
+Imports System.Configuration
 Imports System.Data
+Imports System.Linq
 Imports System.Web
+Imports System.Web.Security
+Imports System.Web.UI
+Imports System.Web.UI.HtmlControls
+Imports System.Web.UI.WebControls
+Imports System.Web.UI.WebControls.WebParts
+Imports System.Xml.Linq
+Imports GemBox.Spreadsheet
 
 Partial Class StockOUTList
     Inherits System.Web.UI.Page
@@ -123,5 +139,73 @@ hades:
         SqlQuery("select ID,Itemname,Quantity from stockoutlist where operation='" & Service.Text & "'")
         RadGrid1.DataSource = dtCommon
         RadGrid1.DataBind()
+    End Sub
+    Protected Sub RadButton1_Click(sender As Object, e As EventArgs) Handles RadButton1.Click
+        SqlQuery("select ID,Itemname,Quantity from stockoutlist where operation='" & Service.Text & "'")
+
+
+        Dim rptTbl As New DataTable
+
+        With rptTbl.Columns
+            .Add("ItemName")
+            .Add("Quantity")
+        End With
+
+        For x As Integer = 0 To dtCommon.Rows.Count - 1
+            rptTbl.Rows.Add(dtCommon.Rows(x).Item(1), dtCommon.Rows(x).Item(2))
+        Next
+
+        SpreadsheetInfo.SetLicense("E5M9-UYGW-HF3O-VETZ")
+        Dim path As String = Server.MapPath("~\ToPrint\")
+        Dim NameOfFile As String = path & "StockoutList.xlsx"
+
+        Dim WB As ExcelFile = ExcelFile.Load(NameOfFile)
+        Dim WS As ExcelWorksheet = WB.Worksheets.ActiveWorksheet
+        WS.Cells.Style.ShrinkToFit = True
+
+        WB.Worksheets.Item(0).Cells("A8").Value = "STOCK OUT LIST FOR " & Service.Text.ToUpper
+
+        WS.InsertDataTable(rptTbl, New InsertDataTableOptions("A11"))
+
+        Dim Filename As String = "StockOutList" & Format(DateTime.Now, "MMddyyyy_HHmmss") & ".pdf"
+        Dim strFileName As String = path & Filename
+        Dim blnFileOpen As Boolean = False
+
+        Try
+            Dim fileTemp As System.IO.FileStream = System.IO.File.OpenWrite(strFileName)
+            fileTemp.Close()
+        Catch ex As Exception
+            blnFileOpen = False
+        End Try
+
+        If System.IO.File.Exists(strFileName) Then
+            System.IO.File.Delete(strFileName)
+        End If
+
+
+        WB.Save(strFileName)
+
+        Dim FP As String = Server.MapPath("~/ToPrint/" & Filename)
+        Dim user As New WebClient
+        Dim FB As Byte() = user.DownloadData(FP)
+        If Not FB Is Nothing Then
+            Response.ClearContent()
+            Response.Clear()
+            Response.ContentType = "application/pdf"
+            Response.AddHeader("content-length", FB.Length.ToString())
+            Response.BinaryWrite(FB)
+        End If
+
+        'Dim response As HttpResponse = HttpContext.Current.Response
+        'response.ClearContent()
+        'response.Clear()
+        'response.ContentType = "application/word"
+        'response.AddHeader("Content-Disposition", "attachment; filename=ClientList_" & Format(DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Local), "MMddyyyy_HHmmss") & ".pdf")
+        'response.TransmitFile(Server.MapPath("~/ToPrint/" & Filename))
+        'response.Flush()
+
+        File.Delete(Server.MapPath("~/ToPrint/" & Filename))
+
+        Response.End()
     End Sub
 End Class

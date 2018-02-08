@@ -56,13 +56,13 @@
 
            .auto-style18 {
               text-align: left;
-              width: 281px;
+              width: 180px;
           }
           
 
            .auto-style21 {
               height: 41px;
-              width: 281px;
+              width: 180px;
           }
           .auto-style22 {
               height: 41px;
@@ -91,6 +91,24 @@
           }
 
 
+           .auto-style28 {
+        height: 41px;
+        width: 118px;
+    }
+    .auto-style29 {
+        width: 118px;
+        text-align: right;
+    }
+    .auto-style31 {
+        width: 110px;
+        text-align: right;
+    }
+    .auto-style32 {
+        height: 41px;
+        width: 110px;
+    }
+
+
            </style>
  
  
@@ -104,7 +122,9 @@
     <table style="width:100%; height: 76px;">
         <tr>
             <td class="auto-style7"></td>
+            <td class="auto-style32">&nbsp;</td>
             <td class="auto-style27">&nbsp;</td>
+            <td class="auto-style28">&nbsp;</td>
             <td class="auto-style5">
                 <asp:TextBox ID="TextBox1" runat="server" style="display:none"></asp:TextBox>
                  <asp:TextBox ID="TextBox2" runat="server" style="display:none"></asp:TextBox>
@@ -118,7 +138,20 @@
         </tr>
         <tr>
             <td class="auto-style8">&nbsp;</td>
+            <td class="auto-style31">
+                <telerik:RadLabel ID="RadLabel5" runat="server" Skin="Bootstrap" style="font-size: large" Font-Bold="True" Font-Names="Century Gothic" Font-Size="Medium">
+                    Last Visit:</telerik:RadLabel>
+            </td>
             <td class="auto-style26">
+                <telerik:RadComboBox ID="Sex0" Runat="server" Font-Names="Century Gothic" Font-Size="Medium" Width="167px" Skin="Bootstrap" AutoPostBack="True" EmptyMessage="Choose Sex">
+                    <Items>
+                        <telerik:RadComboBoxItem runat="server" Text="All" Value="All" />
+                        <telerik:RadComboBoxItem runat="server" Text="January" Value="January" />
+                        <telerik:RadComboBoxItem runat="server" Text="February" Value="February" />
+                    </Items>
+                </telerik:RadComboBox>
+            </td>
+            <td class="auto-style29">
                 <telerik:RadLabel ID="RadLabel2" runat="server" Skin="Bootstrap" style="font-size: large" Font-Bold="True" Font-Names="Century Gothic" Font-Size="Medium">
                     Sex:</telerik:RadLabel>
             </td>
@@ -157,10 +190,11 @@
         </tr>
     </table>
     <br />
-    
+   
     <center>
       <telerik:RadClientExportManager runat="server" ID="RadClientExportManager1"><PdfSettings FileName="DENTCAST_StocksMonitoring" /></telerik:RadClientExportManager>
         <telerik:RadHtmlChart runat="server" ID="RadHtmlChart1" Skin="Bootstrap" Font-Names="Century Gothic">
+            
     <PlotArea>
         <Series>
             <telerik:ColumnSeries Name="Product" DataFieldY="Age" Gap="1" Spacing="0.4">
@@ -183,7 +217,7 @@
         <YAxis AxisCrossingValue="0" Color="black" MajorTickSize="1" MajorTickType="Outside"
                     MinorTickType="None" Reversed="false">
             <LabelsAppearance DataFormatString="{0}" />
-            <TitleAppearance Position="Center" RotationAngle="0" Text="Age">
+            <TitleAppearance Position="Center" RotationAngle="0" Text="Quantity">
                     </TitleAppearance>
         </YAxis>
     </PlotArea>

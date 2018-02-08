@@ -40,8 +40,9 @@ Partial Class Service
         End If
     End Sub
     Protected Sub RadGrid_InsertCommand(ByVal source As Object, ByVal e As Telerik.Web.UI.GridCommandEventArgs) Handles RadGrid1.InsertCommand
-        Dim ID, Services As GridTextBoxColumnEditor
+        Dim ID, Services, Hours As GridTextBoxColumnEditor
         Dim serviceid, product As String
+        Dim hours1 As Double
         If TypeOf e.Item Is GridEditableItem AndAlso e.Item.IsInEditMode Then
             If (TypeOf e.Item Is GridEditFormInsertItem) Then
                 Dim item As GridEditableItem = TryCast(e.Item, GridEditableItem)
@@ -50,8 +51,11 @@ Partial Class Service
                 serviceid = ID.Text
                 Services = TryCast(manager.GetColumnEditor("Services"), GridTextBoxColumnEditor)
                 Services.TextBoxControl.Enabled = True
+                Hours = TryCast(manager.GetColumnEditor("Hours"), GridTextBoxColumnEditor)
+                Hours.TextBoxControl.Enabled = True
                 product = Services.Text
-                SqlQuery("insert into servicestbl(serviceoffered) values('" & product & "')")
+                hours1 = Hours.Text
+                SqlQuery("insert into servicestbl(serviceoffered,hours) values('" & product & "','" & hours1 & "')")
                 RadGrid1.MasterTableView.ClearEditItems()
                 RadGrid1.MasterTableView.IsItemInserted = False
                 RadGrid1.MasterTableView.Rebind()
@@ -70,8 +74,9 @@ Partial Class Service
     End Sub
 
     Protected Sub RadGrid_ItemUpdated(ByVal source As Object, ByVal e As Telerik.Web.UI.GridCommandEventArgs) Handles RadGrid1.EditCommand
-        Dim ID, Services As GridTextBoxColumnEditor
+        Dim ID, Services, Hours As GridTextBoxColumnEditor
         Dim serviceid, product As String
+        Dim hours1 As Double
         If TypeOf e.Item Is GridEditableItem AndAlso e.Item.IsInEditMode Then
             If Not (TypeOf e.Item Is GridEditFormInsertItem) Then
                 Dim item As GridEditableItem = TryCast(e.Item, GridEditableItem)
@@ -80,8 +85,11 @@ Partial Class Service
                 serviceid = ID.Text
                 Services = TryCast(manager.GetColumnEditor("Services"), GridTextBoxColumnEditor)
                 Services.TextBoxControl.Enabled = True
+                Hours = TryCast(manager.GetColumnEditor("Hours"), GridTextBoxColumnEditor)
+                Hours.TextBoxControl.Enabled = True
                 product = Services.Text
-                SqlQuery("update servicestbl set serviceoffered='" & product & "' where id='" & serviceid & "'")
+                hours1 = Hours.Text
+                SqlQuery("update servicestbl set serviceoffered='" & product & "',hours='" & hours1 & "' where id='" & serviceid & "'")
                 RadGrid1.MasterTableView.ClearEditItems()
                 RadGrid1.Rebind()
                 Response.Redirect("Service.aspx")
@@ -92,10 +100,10 @@ Partial Class Service
 
     Protected Sub RadGrid1_NeedDataSource(sender As Object, e As GridNeedDataSourceEventArgs) Handles RadGrid1.NeedDataSource
         If RadTextBox1.Text = Nothing Then
-            SqlQuery("Select id, serviceoffered as 'Services Offered' from servicestbl order by serviceoffered")
+            SqlQuery("Select id, serviceoffered as 'Services Offered',hours from servicestbl order by serviceoffered")
             RadGrid1.DataSource = dtCommon
         Else
-            SqlQuery("Select id, serviceoffered as 'Services Offered' from servicestbl where serviceoffered like '" & RadTextBox1.Text & "%' order by serviceoffered")
+            SqlQuery("Select id, serviceoffered as 'Services Offered',hours from servicestbl where serviceoffered like '" & RadTextBox1.Text & "%' order by serviceoffered")
             RadGrid1.DataSource = dtCommon
         End If
     End Sub
@@ -107,9 +115,9 @@ Partial Class Service
     End Sub
     Protected Sub RadButton1_Click(sender As Object, e As EventArgs) Handles RadButton1.Click
         If RadTextBox1.Text = Nothing Then
-            SqlQuery("Select serviceoffered as 'Services Offered' from servicestbl order by serviceoffered")
+            SqlQuery("Select serviceoffered as 'Services Offered',hours from servicestbl order by serviceoffered")
         Else
-            SqlQuery("Select serviceoffered as 'Services Offered' from servicestbl where serviceoffered like '" & RadTextBox1.Text & "%' order by serviceoffered")
+            SqlQuery("Select serviceoffered as 'Services Offered',hours from servicestbl where serviceoffered like '" & RadTextBox1.Text & "%' order by serviceoffered")
         End If
 
         Dim rptTbl As New DataTable
