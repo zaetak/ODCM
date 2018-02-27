@@ -15,7 +15,7 @@ Partial Class PatientRecord
         If dtCommon.Rows(0).Item(1) = Nothing Then
             FirstName.Text = "NULL"
         Else
-            FirstName.Text = dtCommon.Rows(0).Item(1)
+            FirstName.Text = dtCommon.Rows(0).Item(10)
         End If
 
         If dtCommon.Rows(0).Item(2) = Nothing Then
@@ -140,14 +140,20 @@ Partial Class PatientRecord
         '    TryCast(dataItem("column8").Controls(0), Button).CssClass = "MyButton"
         'End If
     End Sub
-    'Private Sub RadGrid1_ItemCommand(sender As Object, e As GridCommandEventArgs) Handles RadGrid1.ItemCommand
-    '    If e.CommandName = "View" Then
-    '        Dim item As GridDataItem = CType(e.Item, GridDataItem)
-    '        Dim ID As String = item("TeethID").Text
-    '        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=" & ID & ""
-    '        ModalPopupExtender1.Show()
-    '    End If
-    'End Sub
+
+    Private Sub RadGrid1_ItemCommand(sender As Object, e As GridCommandEventArgs) Handles RadGrid1.ItemCommand
+        If e.CommandName = "View" Then
+            Dim item As GridDataItem = CType(e.Item, GridDataItem)
+            Dim ID As String = item("TeethID").Text
+            Page.Session("Red") = True
+            Page.Session("teethid") = ID
+            Page.Session("viewonly") = True
+            Response.Redirect("PatientRecord.aspx")
+
+            'ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=55"
+
+        End If
+    End Sub
     Protected Sub RadGrid1_NeedDataSource(sender As Object, e As GridNeedDataSourceEventArgs) Handles RadGrid1.NeedDataSource
         RadGrid1.DataSource = Nothing
         SqlQuery("Select id,teethid,service,diagnosis,DATE_FORMAT(examdate,'%M %d, %Y') as examdate from patientteeth where clientid='" & ID & "' order by examdate  desc")
@@ -161,6 +167,11 @@ Partial Class PatientRecord
     End Sub
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         GetClientID()
+        If Page.Session("Red") = True Then
+            Page.Session("Red") = False
+            ifrm1.Attributes.Add("src", "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=" & Page.Session("teethid") & "")
+            ModalPopupExtender1.Show()
+        End If
         If IsPostBack = False Then
 
             GetClientInformation()
@@ -168,522 +179,365 @@ Partial Class PatientRecord
         End If
     End Sub
     Private Sub sample55_ServerClick(sender As Object, e As EventArgs) Handles sample55.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='55' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=55"
-            ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=55"
+        ModalPopupExtender1.Show()
     End Sub
 
     Private Sub sample11_ServerClick(sender As Object, e As EventArgs) Handles sample11.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='11' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=11"
-            ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=11"
+        ModalPopupExtender1.Show()
+
     End Sub
 
     Private Sub sample12_ServerClick(sender As Object, e As EventArgs) Handles sample12.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='12' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=12"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=12"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample13_ServerClick(sender As Object, e As EventArgs) Handles sample13.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='13' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=13"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=13"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample14_ServerClick(sender As Object, e As EventArgs) Handles sample14.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='14' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=14"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=14"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample15_ServerClick(sender As Object, e As EventArgs) Handles sample15.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='15' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=15"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=15"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample16_ServerClick(sender As Object, e As EventArgs) Handles sample16.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='16' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=16"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=16"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample17_ServerClick(sender As Object, e As EventArgs) Handles sample17.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='17' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=17"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=17"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample18_ServerClick(sender As Object, e As EventArgs) Handles sample18.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='18' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=18"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=18"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample21_ServerClick(sender As Object, e As EventArgs) Handles sample21.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='21' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=21"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=21"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample22_ServerClick(sender As Object, e As EventArgs) Handles sample22.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='22' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=22"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=22"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample23_ServerClick(sender As Object, e As EventArgs) Handles sample23.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='23' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=23"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=23"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample24_ServerClick(sender As Object, e As EventArgs) Handles sample24.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='24' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=24"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=24"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample25_ServerClick(sender As Object, e As EventArgs) Handles sample25.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='25' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=25"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=25"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample26_ServerClick(sender As Object, e As EventArgs) Handles sample26.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='26' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=26"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=26"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample27_ServerClick(sender As Object, e As EventArgs) Handles sample27.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='27' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=27"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=27"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample28_ServerClick(sender As Object, e As EventArgs) Handles sample28.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='28' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=28"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=28"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample31_ServerClick(sender As Object, e As EventArgs) Handles sample31.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='31' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=31"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=31"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample32_ServerClick(sender As Object, e As EventArgs) Handles sample32.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='32' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=32"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=32"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample33_ServerClick(sender As Object, e As EventArgs) Handles sample33.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='33' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=33"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=33"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample34_ServerClick(sender As Object, e As EventArgs) Handles sample34.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='34' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=34"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=34"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample35_ServerClick(sender As Object, e As EventArgs) Handles sample35.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='35' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=35"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=35"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample36_ServerClick(sender As Object, e As EventArgs) Handles sample36.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='36' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=36"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=36"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample37_ServerClick(sender As Object, e As EventArgs) Handles sample37.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='37' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=37"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=37"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample38_ServerClick(sender As Object, e As EventArgs) Handles sample38.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='38' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=38"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=38"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample41_ServerClick(sender As Object, e As EventArgs) Handles sample41.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='41' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=41"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=41"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample42_ServerClick(sender As Object, e As EventArgs) Handles sample42.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='42' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=42"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=42"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample43_ServerClick(sender As Object, e As EventArgs) Handles sample43.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='43' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=43"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=43"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample44_ServerClick(sender As Object, e As EventArgs) Handles sample44.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='44' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=44"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=44"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample45_ServerClick(sender As Object, e As EventArgs) Handles sample45.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='45' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=45"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=45"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample46_ServerClick(sender As Object, e As EventArgs) Handles sample46.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='46' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=46"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=46"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample47_ServerClick(sender As Object, e As EventArgs) Handles sample47.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='47' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=47"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=47"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample48_ServerClick(sender As Object, e As EventArgs) Handles sample48.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='48' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=48"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=48"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample51_ServerClick(sender As Object, e As EventArgs) Handles sample51.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='51' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=51"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=51"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample52_ServerClick(sender As Object, e As EventArgs) Handles sample52.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='52' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=52"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=52"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample53_ServerClick(sender As Object, e As EventArgs) Handles sample53.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='53' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=53"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=53"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample54_ServerClick(sender As Object, e As EventArgs) Handles sample54.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='54' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=54"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=54"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample61_ServerClick(sender As Object, e As EventArgs) Handles sample61.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='61' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=61"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=61"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample62_ServerClick(sender As Object, e As EventArgs) Handles sample62.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='62' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=62"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=62"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample63_ServerClick(sender As Object, e As EventArgs) Handles sample63.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='63' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=63"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=63"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample64_ServerClick(sender As Object, e As EventArgs) Handles sample64.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='64' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=64"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=64"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample65_ServerClick(sender As Object, e As EventArgs) Handles sample65.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='65' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=65"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=65"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample71_ServerClick(sender As Object, e As EventArgs) Handles sample71.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='71' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=71"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=71"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample72_ServerClick(sender As Object, e As EventArgs) Handles sample72.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='72' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=72"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=72"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample73_ServerClick(sender As Object, e As EventArgs) Handles sample73.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='73' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=73"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=73"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample74_ServerClick(sender As Object, e As EventArgs) Handles sample74.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='74' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=74"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=74"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample75_ServerClick(sender As Object, e As EventArgs) Handles sample75.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='75' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=75"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=75"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample81_ServerClick(sender As Object, e As EventArgs) Handles sample81.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='81' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=81"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=81"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample82_ServerClick(sender As Object, e As EventArgs) Handles sample82.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='82' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=82"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=82"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample83_ServerClick(sender As Object, e As EventArgs) Handles sample83.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='83' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=83"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=83"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample84_ServerClick(sender As Object, e As EventArgs) Handles sample84.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='84' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=84"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=84"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 
     Private Sub sample85_ServerClick(sender As Object, e As EventArgs) Handles sample85.ServerClick
-        SqlQuery("select a.teethid,concat(b.lastname,', ',b.firstname,' ',b.middlename) as name,a.service,DATE_FORMAT(a.examdate,'%m/%d/%Y'),a.chiefcomplaint,a.dentalhistory,a.medication,a.congenital,a.temporo,a.oralhygiene,a.gingival,a.diagnosis from patientteeth a, clienttbl b where a.clientid=b.clientid and a.teethid='85' and a.clientid='" & ID & "'")
-        If dtCommon.Rows.Count > 0 Then
-            ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=85"
+        Page.Session("viewonly") = False
+        ifrm1.Src = "~/ODCMAdmin/TeethRecord.aspx?PatientTeethID=85"
             ModalPopupExtender1.Show()
-        Else
-            RadWindowManager2.RadAlert("No records found.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")
-        End If
+
     End Sub
 End Class

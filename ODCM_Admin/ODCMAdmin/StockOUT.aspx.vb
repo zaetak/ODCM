@@ -10,14 +10,14 @@ Partial Class StockOUT
     Public Sub LoadSupply()
         SqlQuery("select a.Itemname,a.Quantity,a.UOM,a.Category,a.SupplyID from suppliestbl a, stockoutlist b where a.itemname=b.itemname and b.operation='" & Service.Text & "' order by itemname")
         SQLUtilities.LabelmanUtilities.SQLadptr.Fill(SupplyTbl)
-        RadGrid1.DataSource = SupplyTbl
+        RadGrid1.DataSource = dtCommon
         RadGrid1.DataBind()
     End Sub
 
     Public Sub LoadSupplyService()
         SqlQuery("select ID,Itemname,Quantity from stockoutlist where operation='" & Service.Text & "' order by itemname")
         SQLUtilities.LabelmanUtilities.SQLadptr.Fill(StockTbl)
-        RadGrid2.DataSource = StockTbl
+        RadGrid2.DataSource = dtCommon
         RadGrid2.DataBind()
     End Sub
 
@@ -62,5 +62,13 @@ Partial Class StockOUT
                 RadWindowManager2.RadAlert("Stock OUT Successfully.", 330, 180, "DENTCAST", "callBackFn", "/Images/Success.png")
             End If
         Next
+    End Sub
+    Protected Sub RadGrid1_NeedDataSource(sender As Object, e As GridNeedDataSourceEventArgs) Handles RadGrid1.NeedDataSource
+        SqlQuery("select a.Itemname,a.Quantity,a.UOM,a.Category,a.SupplyID from suppliestbl a, stockoutlist b where a.itemname=b.itemname and b.operation='" & Service.Text & "' order by itemname")
+        RadGrid1.DataSource = dtCommon
+    End Sub
+    Protected Sub RadGrid2_NeedDataSource(sender As Object, e As GridNeedDataSourceEventArgs) Handles RadGrid2.NeedDataSource
+        SqlQuery("select ID,Itemname,Quantity from stockoutlist where operation='" & Service.Text & "' order by itemname")
+        RadGrid2.DataSource = dtCommon
     End Sub
 End Class

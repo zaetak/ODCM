@@ -89,6 +89,7 @@ Public Partial Class SiteMaster
             suppliesadmin.Visible = True
             serviceadmin.Visible = True
             statgraph.Visible = True
+            pictureadmin.Visible = True
 
             reservationuser.Visible = False
             recorduser.Visible = False
@@ -106,6 +107,7 @@ Public Partial Class SiteMaster
             suppliesadmin.Visible = False
             serviceadmin.Visible = False
             statgraph.Visible = False
+            pictureadmin.Visible = False
         Else
             clientadmin.Visible = False
             reservationadmin.Visible = False
@@ -116,7 +118,7 @@ Public Partial Class SiteMaster
             aboutuser.Visible = False
             aboutservice.Visible = False
             statgraph.Visible = False
-
+            pictureadmin.Visible = False
         End If
 
     End Sub

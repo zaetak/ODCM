@@ -86,7 +86,7 @@
             <td class="auto-style2">
                 <telerik:RadComboBox ID="Service" Runat="server" Font-Names="Century Gothic" Font-Size="Medium" Width="230px" Skin="Bootstrap" AutoPostBack="True">
                     <Items>
-                        <telerik:RadComboBoxItem runat="server" Font-Names="Century Gothic" Text="RadComboBoxItem1" Value="RadComboBoxItem1" />
+                        <telerik:RadComboBoxItem runat="server" Font-Names="Century Gothic" Text="All" Value="All" />
                     </Items>
                    
                 </telerik:RadComboBox>
@@ -103,6 +103,7 @@
                         <telerik:RadComboBoxItem runat="server" Text="Pending" Value="Pending" />
                         <telerik:RadComboBoxItem runat="server" Text="Approved" Value="Approved" />
                         <telerik:RadComboBoxItem runat="server" Text="Disapproved" Value="Disapproved" />
+                        <telerik:RadComboBoxItem runat="server" Text="All" Value="All" />
                     </Items>
                 </telerik:RadComboBox>
             </td>
@@ -131,9 +132,10 @@
     <telerik:RadAjaxLoadingPanel runat="server" ID="RadAjaxLoadingPanel1" Skin="Bootstrap" />
     <center>
      <div>
-         <telerik:RadGrid RenderMode="Lightweight" ID="RadGrid1" AllowSorting="True" Width="100%"
-            AllowAutomaticInserts="True" AllowAutomaticUpdates="True" AllowAutomaticDeletes="True" OnNeedDataSource="RadGrid1_NeedDataSource" runat="server" OnItemCreated="RadGrid_ItemCreated" OnUpdateCommand="RadGrid_ItemUpdated"
-             AutoGenerateColumns="False" GroupPanelPosition="Top" Skin="Bootstrap" Font-Names="Century Gothic" Font-Size="Medium">
+            <telerik:RadGrid RenderMode="Lightweight" ID="RadGrid1" Width="100%"
+                AllowAutomaticInserts="True" AllowAutomaticUpdates="True" AllowAutomaticDeletes="True" OnNeedDataSource="RadGrid1_NeedDataSource" runat="server"  OnUpdateCommand="RadGrid_ItemUpdated"
+                AutoGenerateColumns="False" GroupPanelPosition="Top" Skin="Bootstrap" Font-Names="Century Gothic" Font-Size="Medium" AllowPaging="True">
+             
              <FooterStyle Font-Names="Century Gothic" />
              <HeaderStyle Font-Names="Century Gothic" Font-Size="Medium" />
              <CommandItemStyle Font-Names="Century Gothic" Font-Size="Medium" />
@@ -146,7 +148,7 @@
             <MasterTableView Width="100%" CommandItemDisplay="Top"
                 DataKeyNames="ID" InsertItemDisplay="Top"
                 InsertItemPageIndexAction="ShowItemOnFirstPage">
-                <CommandItemSettings ShowAddNewRecordButton="false" />
+                <CommandItemSettings ShowAddNewRecordButton="false" ShowRefreshButton="False" />
                 <Columns>
                    
                      <telerik:GridTemplateColumn FilterControlAltText="Filter TemplateColumn column" UniqueName="TemplateColumn">

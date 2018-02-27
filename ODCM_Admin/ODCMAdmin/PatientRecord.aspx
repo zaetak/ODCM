@@ -30,6 +30,23 @@
        padding: 8px 12px;
        border-radius: 4px;
    } 
+        .auto-style1 {
+            width: 253px;
+            height: 37px;
+        }
+        .auto-style2 {
+            text-align: left;
+            width: 150px;
+            height: 37px;
+        }
+        .auto-style3 {
+            width: 253px;
+        }
+        .auto-style4 {
+            text-align: right;
+            width: 150px;
+            height: 37px;
+        }
         </style>
     <script type="text/javascript">
         (function (global, undefined) {
@@ -342,15 +359,16 @@
     <br />
 <table  style="width:100%;">
         <tr>
-            <td style="width: 71px; height: 37px;"></td>
-            <td class="text-right" style="width: 223px; height: 37px;">
+            <td class="auto-style1"></td>
+            <td class="auto-style2">
                 <telerik:RadLabel ID="RadLabel4" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
                     Last Name:</telerik:RadLabel>
             </td>
             <td style="width: 235px; height: 37px">
-                <telerik:RadLabel ID="LastName" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap"></telerik:RadLabel>
+                <telerik:RadLabel ID="LastName" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
+                    </telerik:RadLabel>
             </td>
-            <td class="text-right" style="width: 208px; height: 37px;">
+            <td class="text-left" style="width: 208px; height: 37px;">
                 <telerik:RadLabel ID="RadLabel7" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
                     Sex:</telerik:RadLabel>
             </td>
@@ -361,8 +379,8 @@
             <td style="height: 37px"></td>
         </tr>
         <tr>
-            <td style="width: 71px; height: 37px;"></td>
-            <td class="text-right" style="width: 223px; height: 37px;">
+            <td class="auto-style1"></td>
+            <td class="auto-style2">
                 <telerik:RadLabel ID="RadLabel5" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
                     First Name:</telerik:RadLabel>
             </td>
@@ -370,7 +388,7 @@
                 <telerik:RadLabel ID="FirstName" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
                     </telerik:RadLabel>
             </td>
-            <td style="width: 208px; height: 37px;" class="text-right">
+            <td style="width: 208px; height: 37px;" class="text-left">
                 <telerik:RadLabel ID="RadLabel8" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
                     Nickname:</telerik:RadLabel>
             </td>
@@ -381,8 +399,8 @@
             <td style="height: 37px"></td>
         </tr>
         <tr>
-            <td style="width: 71px">&nbsp;</td>
-            <td class="text-right" style="width: 223px; height: 37px;">
+            <td class="auto-style3">&nbsp;</td>
+            <td class="text-left">
                 <telerik:RadLabel ID="RadLabel6" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
                     Middle Name:</telerik:RadLabel>
             </td>
@@ -390,7 +408,7 @@
                 <telerik:RadLabel ID="MiddleName" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
                     </telerik:RadLabel>
             </td>
-            <td style="width: 208px" class="text-right">
+            <td style="width: 208px" class="text-left">
                 <telerik:RadLabel ID="RadLabel9" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
                     Home No.:</telerik:RadLabel>
             </td>
@@ -401,8 +419,8 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td style="width: 71px">&nbsp;</td>
-            <td class="text-right" style="width: 223px; height: 37px;">
+            <td class="auto-style3">&nbsp;</td>
+            <td class="text-left">
                 <telerik:RadLabel ID="RadLabel10" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
                     Birth Date:</telerik:RadLabel>
             </td>
@@ -410,7 +428,7 @@
                 <telerik:RadLabel ID="Birthdate" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
                     </telerik:RadLabel>
             </td>
-            <td style="width: 208px" class="text-right">
+            <td style="width: 208px" class="text-left">
                 <telerik:RadLabel ID="RadLabel11" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
                     Office No.:</telerik:RadLabel>
             </td>
@@ -421,8 +439,8 @@
             <td>&nbsp;</td>
         </tr>
           <tr>
-            <td style="width: 71px">&nbsp;</td>
-            <td class="text-right" style="width: 223px; height: 37px;">
+            <td class="auto-style3">&nbsp;</td>
+            <td class="text-left">
                 <telerik:RadLabel ID="RadLabel12" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
                     Age:</telerik:RadLabel>
             </td>
@@ -430,7 +448,7 @@
                 <telerik:RadLabel ID="Age" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
                     </telerik:RadLabel>
             </td>
-            <td style="width: 208px" class="text-right">
+            <td style="width: 208px" class="text-left">
                 <telerik:RadLabel ID="RadLabel13" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
                     Fax No.:</telerik:RadLabel>
               </td>
@@ -441,8 +459,8 @@
             <td>&nbsp;</td>
         </tr>
          <tr>
-            <td style="width: 71px">&nbsp;</td>
-            <td class="text-right" style="width: 223px; height: 37px;">
+            <td class="auto-style3">&nbsp;</td>
+            <td class="text-left">
                 <telerik:RadLabel ID="RadLabel14" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
                     Religion:</telerik:RadLabel>
             </td>
@@ -450,7 +468,7 @@
                 <telerik:RadLabel ID="Religion" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
                     </telerik:RadLabel>
             </td>
-            <td style="width: 208px" class="text-right">
+            <td style="width: 208px" class="text-left">
                 <telerik:RadLabel ID="RadLabel15" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
                     Mobile No.:</telerik:RadLabel>
               </td>
@@ -461,8 +479,8 @@
             <td>&nbsp;</td>
         </tr>
          <tr>
-            <td style="width: 71px">&nbsp;</td>
-            <td class="text-right" style="width: 223px; height: 37px;">
+            <td class="auto-style3">&nbsp;</td>
+            <td class="text-left">
                 <telerik:RadLabel ID="RadLabel16" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
                     Nationality</telerik:RadLabel>
             </td>
@@ -470,7 +488,7 @@
                 <telerik:RadLabel ID="Nationality" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
                     </telerik:RadLabel>
             </td>
-            <td style="width: 208px" class="text-right">
+            <td style="width: 208px" class="text-left">
                 <telerik:RadLabel ID="RadLabel17" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
                     Email Address:</telerik:RadLabel>
               </td>
@@ -481,8 +499,8 @@
             <td>&nbsp;</td>
         </tr>
          <tr>
-            <td style="width: 71px">&nbsp;</td>
-            <td class="text-right" style="width: 223px; height: 37px;">
+            <td class="auto-style3">&nbsp;</td>
+            <td class="text-left">
                 <telerik:RadLabel ID="RadLabel18" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
                     Home Address:</telerik:RadLabel>
             </td>
@@ -490,7 +508,7 @@
                 <telerik:RadLabel ID="HomeAddr" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
                     </telerik:RadLabel>
             </td>
-            <td style="width: 208px" class="text-right">
+            <td style="width: 208px" class="text-left">
                 <telerik:RadLabel ID="RadLabel19" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
                     Effective Date:</telerik:RadLabel>
               </td>
@@ -501,8 +519,8 @@
             <td>&nbsp;</td>
         </tr>
                  <tr>
-            <td style="width: 71px">&nbsp;</td>
-            <td class="text-right" style="width: 223px; height: 37px;">
+            <td class="auto-style3">&nbsp;</td>
+            <td class="text-left">
                 <telerik:RadLabel ID="RadLabel20" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
                     Occupation:</telerik:RadLabel>
             </td>
@@ -510,7 +528,7 @@
                 <telerik:RadLabel ID="Occupation" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
                     </telerik:RadLabel>
             </td>
-            <td style="width: 208px" class="text-right">
+            <td style="width: 208px" class="text-left">
                 <telerik:RadLabel ID="RadLabel21" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
                     Dental Insurance:</telerik:RadLabel>
               </td>
@@ -521,8 +539,8 @@
             <td>&nbsp;</td>
         </tr>
                  <tr>
-            <td style="width: 71px">&nbsp;</td>
-            <td class="text-right" style="width: 223px; height: 37px; font-size: 16px;">
+            <td class="auto-style3">&nbsp;</td>
+            <td class="text-left" style="font-size: 16px;">
                 <strong>For Minors:</strong></td>
             <td style="width: 235px; height: 37px">
                 &nbsp;</td>
@@ -533,8 +551,8 @@
             <td>&nbsp;</td>
         </tr>
                  <tr>
-            <td style="width: 71px">&nbsp;</td>
-            <td class="text-right" style="width: 223px; height: 37px;">
+            <td class="auto-style3">&nbsp;</td>
+            <td class="text-left">
                 <telerik:RadLabel ID="RadLabel23" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
                     Guardian&#39;s Name</telerik:RadLabel>
             </td>
@@ -542,7 +560,7 @@
                 <telerik:RadLabel ID="Guardian" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap">
                     </telerik:RadLabel>
             </td>
-            <td style="width: 208px" class="text-right">
+            <td style="width: 208px" class="text-left">
                 <telerik:RadLabel ID="RadLabel24" runat="server" Font-Names="Century Gothic" Font-Size="Medium" Skin="Bootstrap" Font-Bold="True">
                     Occupation:</telerik:RadLabel>
               </td>
@@ -579,7 +597,7 @@
     <MasterTableView Width="100%" CommandItemDisplay="Top"
                 DataKeyNames="ID" InsertItemDisplay="Top"
                 InsertItemPageIndexAction="ShowItemOnFirstPage">
-                <CommandItemSettings ShowAddNewRecordButton="false" />
+                <CommandItemSettings ShowAddNewRecordButton="false" ShowRefreshButton="False" />
                 <Columns>
                     <telerik:GridTemplateColumn FilterControlAltText="Filter TemplateColumn column" UniqueName="TemplateColumn">
                         <ItemTemplate>
@@ -591,7 +609,7 @@
                     FilterControlAltText="Filter column column" HeaderText="Last Name" 
                     ReadOnly="True" UniqueName="ID" Display="false">
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="TeethID" 
                     FilterControlAltText="Filter column column" HeaderText="Teeth Number" 
@@ -617,10 +635,10 @@
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
                     <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
-                   <%--  <telerik:GridButtonColumn HeaderText="View History" ItemStyle-Width="170px" ButtonType="ImageButton" CommandName="View" ImageUrl="~/Images/View.png">
+                     <telerik:GridButtonColumn HeaderText="View History" ItemStyle-Width="170px" ButtonType="ImageButton" CommandName="View" ImageUrl="~/Images/View.png">
                      <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                        </telerik:GridButtonColumn>--%>
+                  </telerik:GridButtonColumn>
             </Columns>
          </MasterTableView>
             <SelectedItemStyle Font-Names="Century Gothic" />

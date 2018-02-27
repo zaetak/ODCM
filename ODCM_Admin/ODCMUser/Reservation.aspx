@@ -82,8 +82,8 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><span class="auto-style1">Schedule an appointment.
     </span></strong>
     </p>
-    <telerik:RadScheduler RenderMode="Lightweight" runat="server" ID="RadScheduler1" Skin="Bootstrap" FirstDayOfWeek="Monday" LastDayOfWeek="Saturday"
-            SelectedView="WeekView" Height="865px" AllowEdit="false" AllowDelete="false" AllowInsert="true" DayEndTime="20:00:00" EnableDescriptionField="true">
+    <telerik:RadScheduler RenderMode="Lightweight" runat="server" ID="RadScheduler1" Skin="Bootstrap" FirstDayOfWeek="Monday"
+            SelectedView="WeekView" Height="865px" AllowEdit="False" AllowDelete="False" DayEndTime="20:00:00" EnableDescriptionField="True" RowHeight="30px" ShowFooter="False" ShowViewTabs="False">
             <WeekView UserSelectable="true" />
             <DayView UserSelectable="true" />
             <MultiDayView UserSelectable="false" />

@@ -36,22 +36,15 @@ div.demo-container {
     width: 100%;
    
 }
-    </style>
+        </style>
     
-    <div class="demo-container">
-        <telerik:RadAjaxPanel runat="server" ID="RadAjaxPanel1">
-           <br /><br />
-            <telerik:RadImageGallery RenderMode="Lightweight" runat="server" ID="RadImageGallery1" Height="450px" Width="1200px" Skin="Bootstrap" DisplayAreaMode="Image" LoopItems="True" ShowLoadingPanel="True">
+   <table style="width:100%">
+       <tr>
+           <td style="width:60%">
+                 <telerik:RadAjaxPanel runat="server" ID="RadAjaxPanel1" Width="100%">
+           <br />
+            <telerik:RadImageGallery RenderMode="Lightweight" runat="server" ID="RadImageGallery1" Height="450px" Width="100%" Skin="Bootstrap" DisplayAreaMode="Image" LoopItems="True" ShowLoadingPanel="True" ImagesFolderPath="~/ODCMAdmin/SplashImage">
             <ToolbarSettings ShowSlideshowButton="true" />
-                <Items>
-                    <telerik:ImageGalleryItem Description="" ImageUrl="Images/1a.jpg" ThumbnailUrl="Images/1a.jpg" Title="" />
-                    <telerik:ImageGalleryItem Description="" ImageUrl="Images/2a.jpg" ThumbnailUrl="Images/2a.jpg" Title="" />
-                    <telerik:ImageGalleryItem Description="" ImageUrl="Images/3a.jpg" ThumbnailUrl="Images/3a.jpg" Title="" />
-                    <telerik:ImageGalleryItem Description="" ImageUrl="Images/4a.jpg" ThumbnailUrl="Images/4a.jpg" Title="" />
-                    <telerik:ImageGalleryItem Description="" ImageUrl="Images/5a.jpg" ThumbnailUrl="Images/5a.jpg" Title="" />
-                    <telerik:ImageGalleryItem Description="" ImageUrl="Images/6a.jpg" ThumbnailUrl="Images/6a.jpg" Title="" />
-                    <telerik:ImageGalleryItem Description="" ImageUrl="Images/7a.jpg" ThumbnailUrl="Images/7a.jpg" Title="" />
-                </Items>
                 <ThumbnailsAreaSettings Mode="ImageSliderPreview" ScrollButtonsTrigger="Hover" />
                 <ImageAreaSettings Height="100%" Width="100%" NavigationMode="Zone" ShowDescriptionBox="true" />
                 <ToolbarSettings Position="None" />
@@ -63,15 +56,78 @@ div.demo-container {
                     </AnimationSettings>
                 </ClientSettings>
             </telerik:RadImageGallery>
-           
-            <div class="Info">
-                <h3>
-                </h3>
-                <span>
-                </span>
-            </div>
         </telerik:RadAjaxPanel>
-    </div>
+           </td>
+           <td style="width:2%;">
+
+           </td>
+           <td style="width:40%">
+                <%--<div class="panel panel-default" style="width:100%;">--%>
+            <section runat="server" id="loginForm">
+                    <h4 style="font-family: 'Century Gothic'">Log in.</h4>
+                    <hr />
+                    <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
+                        <p class="text-danger">
+                            <asp:Literal runat="server" ID="FailureText" />
+                        </p>
+                    </asp:PlaceHolder>
+                    <div class="form-group" ID ="formLogin">
+                        <asp:Label runat="server" AssociatedControlID="UserName" CssClass="col-md-3 control-label" Font-Size="Medium">Username:</asp:Label>
+                        <div class="col-md-9">
+                            <asp:TextBox runat="server" ID="UserName" CssClass="form-control" />
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="UserName"
+                                CssClass="text-danger" ErrorMessage="The user name field is required." Font-Size="Medium" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-3 control-label" Font-Size="Medium">Password:</asp:Label>
+                        <div class="col-md-9">
+                            <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="Password" CssClass="text-danger" ErrorMessage="The password field is required." Font-Size="Medium" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-9">
+                            <div class="checkbox">
+                                <asp:CheckBox runat="server" ID="RememberMe" Font-Size="Medium" />
+                                <asp:Label runat="server" AssociatedControlID="RememberMe" Font-Size="Medium">Remember me?</asp:Label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-9">
+                            <telerik:RadWindowManager RenderMode="Lightweight" ID="RadWindowManager1" runat="server" EnableShadow="true">
+                            </telerik:RadWindowManager>
+                            
+                            <asp:Button runat="server"  OnClick="LogIn" Text="Log in" CssClass="btn btn-default" />
+                            
+                        </div>
+                    </div>
+                <p class="col-md-offset-1 col-md-11" style="font-family: 'Century Gothic'; font-size: medium;  margin-left:90px;margin-top:10px;">
+                    <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled" Font-Names="Century Gothic" Font-Size="Medium">Register</asp:HyperLink>
+                    to have an account.
+                </p>
+            </section>
+      <%--  </div>--%>
+           </td>
+       </tr>
+       </table>
+    <table style="width:200% !important;">
+       <tr>
+           <td>
+                   <asp:Image ID="Image1" ImageUrl="~/Images/dentcast.jpeg" runat="server" style="margin-left:100px;margin-top:20px;" Height="272px" Width="410px" />
+                
+           </td>
+           <td></td>
+           <td>
+              <asp:Image ID="Image2" ImageUrl="~/Images/dentcast.jpeg" runat="server" Height="168px" Width="407px" />
+              </td>
+          
+        
+       </tr>
+       </table>
+      
+   
       <asp:PlaceHolder runat="server">
         <script type="text/javascript">
             function imageGalleryCreated(sender, args) {
@@ -89,25 +145,6 @@ div.demo-container {
             }
         </script>
  </asp:PlaceHolder>
-    <div class="row">
-        <div class="col-md-4">
-            <h2></h2>
-            <p>
-                
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2></h2>
-            <p>
-                
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2></h2>
-            <p>
-                
-            </p>
-        </div>
-    </div>
+   
 
 </asp:Content>

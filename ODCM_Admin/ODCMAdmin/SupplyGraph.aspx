@@ -101,9 +101,9 @@
  
   <script type="text/javascript">
       var $ = $telerik.$;
-      function exportRadHtmlChart() {
-          var exp = $find("<%=RadClientExportManager1.ClientID%>").exportPDF($telerik.$(".RadHtmlChart"));
-      }
+      <%--function exportRadHtmlChart() {
+          var exp = $find("<%=RadClientExportManager1.ClientID%>").exportImage($telerik.$(".RadHtmlChart"));
+      }--%>
 
     function OnClientSeriesClicked(sender, eventArgs) {
          //var cat = eventArgs.get_category();
@@ -113,9 +113,7 @@
      }
      
   </script>
-     <h2 style="font-family: 'Century Gothic'; font-weight: bold;" class ="text-center">
-       
-         SUPPLY INFORMATION STATISTICS</h2>
+     <h2 style="font-family: 'Century Gothic'; font-weight: bold;" class ="text-center">SUPPLY INFORMATION STATISTICS</h2>
     <table style="width:100%; height: 76px;">
         <tr>
             <td class="auto-style7"></td>
@@ -188,7 +186,7 @@
                <telerik:RadLabel ID="RadLabel4" runat="server" Skin="Bootstrap" style="font-size: large" Font-Bold="True" Font-Names="Century Gothic" Font-Size="Medium">
                     To</telerik:RadLabel></td>
             <td class="auto-style18">
-               <telerik:RadDatePicker ID="RadDatePicker2" runat="server" AutoPostBack="true" Skin="Bootstrap" Width="176px" Font-Names="Century Gothic">
+               <telerik:RadDatePicker ID="RadDatePicker2" runat="server" AutoPostBack="true" Skin="Bootstrap" Width="176px" Font-Names="Century Gothic" Enabled="False">
 <Calendar UseRowHeadersAsSelectors="False" UseColumnHeadersAsSelectors="False" EnableWeekends="True" FastNavigationNextText="&amp;lt;&amp;lt;" Skin="Bootstrap"></Calendar>
 
 <DateInput DisplayDateFormat="MM/dd/yyyy" DateFormat="MM/dd/yyyy" AutoPostBack="True" LabelWidth="40%">
@@ -213,7 +211,7 @@
             <td class="text-left">
               
                    <strong>
-                                          <telerik:RadButton ID="RadButton1" runat="server" OnClientClicked="exportRadHtmlChart" Font-Bold="True" Font-Names="Century Gothic" Height="25px" style="font-size: 16px; margin-top: 0px" Text="Print" Width="117px" Skin="Bootstrap" BorderColor="#666666" CssClass="auto-style2" Target="_blank" AutoPostBack="False">
+                                          <telerik:RadButton ID="RadButton1" runat="server" Font-Bold="True" Font-Names="Century Gothic" Height="25px" style="font-size: 16px; margin-top: 0px" Text="Print" Width="117px" Skin="Bootstrap" BorderColor="#666666" CssClass="auto-style2" Target="_blank">
                 </telerik:RadButton>
                 </strong>
               
@@ -224,8 +222,8 @@
     
     <center>
 
-                                          <telerik:RadClientExportManager runat="server" ID="RadClientExportManager1"><PdfSettings FileName="DENTCAST_StocksMonitoring" /></telerik:RadClientExportManager>
-        <telerik:RadHtmlChart runat="server" ID="RadHtmlChart1" Skin="Bootstrap" Font-Names="Century Gothic" OnClientSeriesClicked="OnClientSeriesClicked">
+                                         <%-- <telerik:RadClientExportManager runat="server" ID="RadClientExportManager1" ><PdfSettings FileName="DENTCAST_StocksMonitoring" /><ImageSettings ProxyURL="~/App_Data/Export/" FileName="sampleimg.png"/> </telerik:RadClientExportManager>--%>
+        <telerik:RadHtmlChart runat="server" BackColor="White" ID="RadHtmlChart1" Skin="Bootstrap" Font-Names="Century Gothic" OnClientSeriesClicked="OnClientSeriesClicked">
             
     <PlotArea>
                                           <Series>
@@ -233,7 +231,7 @@
                 <TooltipsAppearance DataFormatString="{0}" />
                 <LabelsAppearance Visible="true" />
                                           <Appearance>
-                                          <FillStyle BackgroundColor="#850071"></FillStyle>
+                                          <FillStyle BackgroundColor="79, 129, 189"></FillStyle>
                                                                                                             </Appearance>
             </telerik:ColumnSeries>
         </Series>
@@ -256,6 +254,8 @@
     <Legend>
                                           <Appearance Visible="false" />
     </Legend>
+
+<Zoom Enabled="False"></Zoom>
                                                                                     </telerik:RadHtmlChart>
     </center>
      <br />
@@ -263,7 +263,7 @@
       <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" TargetControlID="Button2" PopupControlID="ModalPanel"
                                 CancelControlID="btnClose" BackgroundCssClass="ModalBackground">
                 </asp:ModalPopupExtender>
-   <asp:Panel ID="ModalPanel" runat="server" Height="439px" style="border: 3px solid Black; background-color:#FFFFFF;" Width="1164px">
+   <asp:Panel ID="ModalPanel" runat="server" Height="439px" style="border: 3px solid Black; background-color:#FFFFFF;display:none;" Width="1164px">
            <table class="nav-justified" style="height: 434px;">
         <tr>
                                               <td> <center style="width: 100%">

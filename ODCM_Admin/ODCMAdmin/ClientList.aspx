@@ -56,7 +56,7 @@
     <center style="width: 100%">
         <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="False" 
         GroupPanelPosition="Top" Skin="Bootstrap" 
-        Width="1158px" Font-Names="Century Gothic" Font-Size="Medium">
+        Width="1158px" Font-Names="Century Gothic" Font-Size="Medium" AllowPaging="True">
 
 <GroupingSettings CollapseAllTooltip="Collapse all groups"></GroupingSettings>
         <AlternatingItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Font-Names="Century Gothic" />
@@ -71,6 +71,17 @@
                     <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" />
 
                 </telerik:GridTemplateColumn>
+
+
+
+                <telerik:GridBoundColumn DataField="ClientID" 
+                    FilterControlAltText="Filter column column" HeaderText="Last Name" 
+                    ReadOnly="True" UniqueName="ID" Display="false">
+                    <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
+                </telerik:GridBoundColumn>
+
+
                 <telerik:GridBoundColumn DataField="LastName" 
                     FilterControlAltText="Filter column column" HeaderText="Last Name" 
                     ReadOnly="True" UniqueName="column">
@@ -95,6 +106,10 @@
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
                     <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
+                <telerik:GridButtonColumn HeaderText="View Diagnosis" ItemStyle-Width="170px" ButtonType="ImageButton" CommandName="View" ImageUrl="~/Images/View.png">
+                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                </telerik:GridButtonColumn>
             </Columns>
         </MasterTableView>
         <EditItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />

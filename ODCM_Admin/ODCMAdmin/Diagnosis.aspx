@@ -149,10 +149,10 @@
                     <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
                     <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" />
                 </telerik:GridBoundColumn>
-              <telerik:GridButtonColumn HeaderText="View Diagnosis" ItemStyle-Width="170px" ButtonType="ImageButton" CommandName="View" ImageUrl="~/Images/View.png">
+                <telerik:GridButtonColumn HeaderText="View Diagnosis" ItemStyle-Width="170px" ButtonType="ImageButton" CommandName="View" ImageUrl="~/Images/View.png">
                      <HeaderStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                        </telerik:GridButtonColumn>
+                </telerik:GridButtonColumn>
             </Columns>
          </MasterTableView>
 <FilterMenu RenderMode="Lightweight"></FilterMenu>

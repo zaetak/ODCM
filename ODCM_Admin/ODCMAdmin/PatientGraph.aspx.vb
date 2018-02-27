@@ -38,6 +38,60 @@ Partial Class PatientGraph
         End If
     End Sub
 
+    Protected Sub RadButton1_Click(sender As Object, e As EventArgs) Handles RadButton1.Click
+        SpreadsheetInfo.SetLicense("E5M9-UYGW-HF3O-VETZ")
+
+        If Sex.Text = "All" Then
+            RadHtmlChart1.ChartTitle.Text = Sex.Text & " Patient Ages " & txtfrom.Text & " to " & txtto.Text
+            SqlQuery("Select clientid,Gender,count(Age) as 'Age' from clienttbl where age between '" & txtfrom.Text & "' and '" & txtto.Text & "' and role='User' group by gender")
+
+        Else
+            RadHtmlChart1.ChartTitle.Text = Sex.Text & " Patient Ages " & txtfrom.Text & " to " & txtto.Text
+            SqlQuery("Select clientid,Gender,count(Age) as 'Age' from clienttbl where age between '" & txtfrom.Text & "' and '" & txtto.Text & "' and role='User' and gender='" & Sex.Text & "' group by gender")
+
+        End If
+
+        Dim path As String = Server.MapPath("~/ToPrint/")
+        Dim NameOfFile As String = path & "PatientGraph.xlsx"
+        Dim Filename As String = "PatientGraph_" & Format(DateTime.Now, "MMddyyyy") & ".pdf"
+        Dim strFileName As String = path & Filename
+
+        Dim WB As ExcelFile = ExcelFile.Load(NameOfFile)
+        Dim WS As ExcelWorksheet = WB.Worksheets.ActiveWorksheet
+        'WS.Cells.Style.ShrinkToFit = True
+
+        WB.Worksheets.Item(0).Cells("A8").Value = RadHtmlChart1.ChartTitle.Text.ToUpper
+
+        Dim numberOfEmployees = dtCommon.Rows.Count - 1
+
+        WS.NamedRanges("ItemName").Range = WS.Cells.GetSubrangeAbsolute(11, 1, numberOfEmployees + 11, 1)
+        WS.NamedRanges("Quantity").Range = WS.Cells.GetSubrangeAbsolute(11, 2, numberOfEmployees + 11, 2)
+
+
+        For i As Integer = 0 To dtCommon.Rows.Count - 1
+            WS.Cells(i + 11, 1).Value = dtCommon.Rows(i).Item(1).ToString
+            WS.Cells(i + 11, 2).SetValue(dtCommon.Rows(i).Item(2))
+        Next
+
+        If System.IO.File.Exists(strFileName) Then
+            System.IO.File.Delete(strFileName)
+        End If
+
+        WB.Save(Server.MapPath("~/ToPrint/PatientGraph_" & Format(DateTime.Now, "MMddyyyy") & ".xlsx"))
+
+        Dim WB1 As ExcelFile = ExcelFile.Load(Server.MapPath("~/ToPrint/PatientGraph_" & Format(DateTime.Now, "MMddyyyy") & ".xlsx"))
+        WB1.Save(Server.MapPath("~/ToPrint/PatientGraph_" & Format(DateTime.Now, "MMddyyyy") & ".pdf"))
+        Dim FP As String = Server.MapPath("~/ToPrint/PatientGraph_" & Format(DateTime.Now, "MMddyyyy") & ".pdf")
+        Dim user As New WebClient
+        Dim FB As Byte() = user.DownloadData(FP)
+        If Not FB Is Nothing Then
+            Response.ClearContent()
+            Response.Clear()
+            Response.ContentType = "application/pdf"
+            Response.AddHeader("content-length", FB.Length.ToString())
+            Response.BinaryWrite(FB)
+        End If
+    End Sub
 
     Private Function GetData() As DataSet
         Dim ds As New DataSet("Stocked")

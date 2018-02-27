@@ -110,18 +110,23 @@ hades:
 
 
     Protected Sub RadGrid1_NeedDataSource(sender As Object, e As GridNeedDataSourceEventArgs) Handles RadGrid1.NeedDataSource
-        RadGrid1.DataSource = Nothing
         If Service.Text = Nothing And Status.Text = Nothing Then
             SqlQuery("select a.id as 'ID',concat(c.lastname,', ',c.firstname,' ',c.middlename) as 'Clientname',c.phonenumber as 'Mobile',b.serviceoffered as 'Service',DATE_FORMAT(a.datereserved,'%M %d, %Y') as 'DateReserved',DATE_FORMAT(a.timereserved,'%h:%i %p') as 'TimeReserved',a.remarks as 'Remarks' from reservationtbl a, servicestbl b,clienttbl c where a.serviceid=b.id and a.clientid=c.clientid and a.status='Pending' order by a.datereserved")
-            RadGrid1.DataSource = dtCommon
-        ElseIf Service.Text = "All" Then
+        ElseIf Service.Text = "All" And Status.Text <> "All" Then
             SqlQuery("select a.id as 'ID',concat(c.lastname,', ',c.firstname,' ',c.middlename) as 'Clientname',c.phonenumber as 'Mobile',b.serviceoffered as 'Service',DATE_FORMAT(a.datereserved,'%M %d, %Y') as 'DateReserved',DATE_FORMAT(a.timereserved,'%h:%i %p') as 'TimeReserved',a.remarks as 'Remarks' from reservationtbl a, servicestbl b,clienttbl c where a.serviceid=b.id and a.clientid=c.clientid and a.status='" & Status.Text & "' order by a.datereserved")
-            RadGrid1.DataSource = dtCommon
+        ElseIf Service.Text <> "All" And Status.Text = "All" Then
+            SqlQuery("select a.id as 'ID',concat(c.lastname,', ',c.firstname,' ',c.middlename) as 'Clientname',c.phonenumber as 'Mobile',b.serviceoffered as 'Service',DATE_FORMAT(a.datereserved,'%M %d, %Y') as 'DateReserved',DATE_FORMAT(a.timereserved,'%h:%i %p') as 'TimeReserved',a.remarks as 'Remarks' from reservationtbl a, servicestbl b,clienttbl c where a.serviceid=b.id and a.clientid=c.clientid and b.serviceoffered='" & Service.Text & "' order by a.datereserved")
+        ElseIf Service.Text = "All" And Status.Text = "All" Then
+            SqlQuery("select a.id as 'ID',concat(c.lastname,', ',c.firstname,' ',c.middlename) as 'Clientname',c.phonenumber as 'Mobile',b.serviceoffered as 'Service',DATE_FORMAT(a.datereserved,'%M %d, %Y') as 'DateReserved',DATE_FORMAT(a.timereserved,'%h:%i %p') as 'TimeReserved',a.remarks as 'Remarks' from reservationtbl a, servicestbl b,clienttbl c where a.serviceid=b.id and a.clientid=c.clientid order by a.datereserved")
         Else
             SqlQuery("select a.id as 'ID',concat(c.lastname,', ',c.firstname,' ',c.middlename) as 'Clientname',c.phonenumber as 'Mobile',b.serviceoffered as 'Service',DATE_FORMAT(a.datereserved,'%M %d, %Y') as 'DateReserved',DATE_FORMAT(a.timereserved,'%h:%i %p') as 'TimeReserved',a.remarks as 'Remarks' from reservationtbl a, servicestbl b,clienttbl c where a.serviceid=b.id and a.clientid=c.clientid and a.status='" & Status.Text & "' and b.serviceoffered='" & Service.Text & "' order by a.datereserved")
-            RadGrid1.DataSource = dtCommon
         End If
+        RadGrid1.DataSource = dtCommon
     End Sub
+
+
+
+
 
     Public Sub LoadService()
         SqlQuery("select serviceoffered from servicestbl order by serviceoffered")
@@ -152,17 +157,20 @@ hades:
         RadGrid1_NeedDataSource(sender, a)
         RadGrid1.Rebind()
         If Status.Text <> "Pending" Then
-            'RadGrid1.Columns(5).Visible = False
-            'RadGrid1.Columns(6).Visible = False
+            If Status.Text = "Approved" Then
+                RadGrid1.Columns(8).Visible = False
+                RadGrid1.Columns(9).Visible = False
 
-            RadGrid1.Columns(7).Visible = False
-            RadGrid1.Columns(8).Visible = False
+            Else
+                RadGrid1.Columns(8).Visible = False
+                RadGrid1.Columns(9).Visible = False
+            End If
         Else
             RadGrid1.Columns(5).Visible = True
             RadGrid1.Columns(6).Visible = True
 
-            RadGrid1.Columns(7).Visible = True
             RadGrid1.Columns(8).Visible = True
+            RadGrid1.Columns(9).Visible = True
         End If
     End Sub
 

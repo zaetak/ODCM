@@ -11,15 +11,12 @@ Partial Class StockIN
             LoadSupply()
         End If
     End Sub
-
-
-    Public Sub LoadSupply()
+    Sub RadGrid1_NeedDataSource(sender As Object, e As GridNeedDataSourceEventArgs) Handles RadGrid1.NeedDataSource
         SqlQuery("select Itemname,Quantity,UOM,Category,SupplyID from suppliestbl order by uom")
         RadGrid1.DataSource = dtCommon
-        RadGrid1.DataBind()
+    End Sub
 
-
-
+    Public Sub LoadSupply()
 
         SqlQuery("select cat_name from odcmdb.category;")
         Category.Items.Clear()
@@ -87,5 +84,8 @@ Partial Class StockIN
         '        RadWindowManager1.RadAlert("Stock OUT Successfully.", 330, 180, "DENTCAST", "callBackFn", "Images/Success.png")
         '    End If
         'End If
+    End Sub
+    Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
+
     End Sub
 End Class

@@ -27,15 +27,17 @@ Partial Class StockLogs
         End If
         If IsPostBack = False Then
             Stock.SelectedValue = "IN"
-            LoadSupply1()
             LoadCategory()
         End If
     End Sub
 
-    Public Sub LoadSupply1()
-        SqlQuery("SELECT  a.invoice,a.Itemname,b.Quantity,a.UOM,a.Category,b.stock,DATE_FORMAT(b.datestock,'%m/%d/%Y') as datestock FROM suppliestbl a,suppliesinouttbl b WHERE a.supplyid=b.supplyid and b.stock='IN' ORDER BY b.datestock DESC")
+    Protected Sub RadGrid1_NeedDataSource(ByVal source As Object, ByVal e As Telerik.Web.UI.GridNeedDataSourceEventArgs) Handles RadGrid1.NeedDataSource
+        If Stock.Text = "ALL" Then
+            SqlQuery("SELECT  b.invoice,a.Itemname,b.Quantity,a.UOM,a.Category,b.stock,DATE_FORMAT(b.datestock,'%m/%d/%Y') as datestock FROM suppliestbl a,suppliesinouttbl b WHERE a.supplyid=b.supplyid ORDER BY b.datestock DESC")
+        Else
+            SqlQuery("SELECT  b.invoice,a.Itemname,b.Quantity,a.UOM,a.Category,b.stock,DATE_FORMAT(b.datestock,'%m/%d/%Y') as datestock FROM suppliestbl a,suppliesinouttbl b WHERE a.supplyid=b.supplyid and b.stock='" & Stock.Text & "' ORDER BY b.datestock DESC")
+        End If
         RadGrid1.DataSource = dtCommon
-        RadGrid1.DataBind()
     End Sub
 
     Public Sub LoadCategory()
@@ -49,11 +51,11 @@ Partial Class StockLogs
 
     Public Sub LoadSupply()
         If Stock.Text = "ALL" Then
-            SqlQuery("SELECT  a.invoice,a.Itemname,b.Quantity,a.UOM,a.Category,b.stock,DATE_FORMAT(b.datestock,'%m/%d/%Y') as datestock FROM suppliestbl a,suppliesinouttbl b WHERE a.supplyid=b.supplyid ORDER BY b.datestock DESC")
+            SqlQuery("SELECT  b.invoice,a.Itemname,b.Quantity,a.UOM,a.Category,b.stock,DATE_FORMAT(b.datestock,'%m/%d/%Y') as datestock FROM suppliestbl a,suppliesinouttbl b WHERE a.supplyid=b.supplyid ORDER BY b.datestock DESC")
             RadGrid1.DataSource = dtCommon
             RadGrid1.DataBind()
         Else
-            SqlQuery("SELECT  a.invoice,a.Itemname,b.Quantity,a.UOM,a.Category,b.stock,DATE_FORMAT(b.datestock,'%m/%d/%Y') as datestock FROM suppliestbl a,suppliesinouttbl b WHERE a.supplyid=b.supplyid and b.stock='" & Stock.Text & "' ORDER BY b.datestock DESC")
+            SqlQuery("SELECT  b.invoice,a.Itemname,b.Quantity,a.UOM,a.Category,b.stock,DATE_FORMAT(b.datestock,'%m/%d/%Y') as datestock FROM suppliestbl a,suppliesinouttbl b WHERE a.supplyid=b.supplyid and b.stock='" & Stock.Text & "' ORDER BY b.datestock DESC")
             RadGrid1.DataSource = dtCommon
             RadGrid1.DataBind()
         End If
@@ -63,31 +65,31 @@ Partial Class StockLogs
             LoadSupply()
         ElseIf Category.Text = "ALL" And RadTextBox1.Text <> Nothing Then
             If Stock.Text = "ALL" Then
-                SqlQuery("SELECT  a.invoice,a.Itemname,b.Quantity,a.UOM,a.Category,b.stock,DATE_FORMAT(b.datestock,'%m/%d/%Y') as datestock FROM suppliestbl a,suppliesinouttbl b WHERE a.supplyid=b.supplyid and a.itemname like '" & RadTextBox1.Text & "%' ORDER BY b.datestock DESC")
+                SqlQuery("SELECT  b.invoice,a.Itemname,b.Quantity,a.UOM,a.Category,b.stock,DATE_FORMAT(b.datestock,'%m/%d/%Y') as datestock FROM suppliestbl a,suppliesinouttbl b WHERE a.supplyid=b.supplyid and a.itemname like '" & RadTextBox1.Text & "%' ORDER BY b.datestock DESC")
                 RadGrid1.DataSource = dtCommon
                 RadGrid1.DataBind()
             Else
-                SqlQuery("SELECT  a.invoice,a.Itemname,b.Quantity,a.UOM,a.Category,b.stock,DATE_FORMAT(b.datestock,'%m/%d/%Y') as datestock FROM suppliestbl a,suppliesinouttbl b WHERE a.supplyid=b.supplyid and a.itemname like '" & RadTextBox1.Text & "%' and b.stock='" & Stock.Text & "' ORDER BY b.datestock DESC")
+                SqlQuery("SELECT  b.invoice,a.Itemname,b.Quantity,a.UOM,a.Category,b.stock,DATE_FORMAT(b.datestock,'%m/%d/%Y') as datestock FROM suppliestbl a,suppliesinouttbl b WHERE a.supplyid=b.supplyid and a.itemname like '" & RadTextBox1.Text & "%' and b.stock='" & Stock.Text & "' ORDER BY b.datestock DESC")
                 RadGrid1.DataSource = dtCommon
                 RadGrid1.DataBind()
             End If
         ElseIf Category.Text <> "ALL" And RadTextBox1.Text = Nothing Then
             If Stock.Text = "ALL" Then
-                SqlQuery("SELECT  a.invoice,a.Itemname,b.Quantity,a.UOM,a.Category,b.stock,DATE_FORMAT(b.datestock,'%m/%d/%Y') as datestock FROM suppliestbl a,suppliesinouttbl b WHERE a.supplyid=b.supplyid and a.category='" & Category.Text & "' ORDER BY b.datestock DESC")
+                SqlQuery("SELECT  b.invoice,a.Itemname,b.Quantity,a.UOM,a.Category,b.stock,DATE_FORMAT(b.datestock,'%m/%d/%Y') as datestock FROM suppliestbl a,suppliesinouttbl b WHERE a.supplyid=b.supplyid and a.category='" & Category.Text & "' ORDER BY b.datestock DESC")
                 RadGrid1.DataSource = dtCommon
                 RadGrid1.DataBind()
             Else
-                SqlQuery("SELECT  a.invoice,a.Itemname,b.Quantity,a.UOM,a.Category,b.stock,DATE_FORMAT(b.datestock,'%m/%d/%Y') as datestock FROM suppliestbl a,suppliesinouttbl b WHERE a.supplyid=b.supplyid and a.category='" & Category.Text & "' and b.stock='" & Stock.Text & "' ORDER BY b.datestock DESC")
+                SqlQuery("SELECT  b.invoice,a.Itemname,b.Quantity,a.UOM,a.Category,b.stock,DATE_FORMAT(b.datestock,'%m/%d/%Y') as datestock FROM suppliestbl a,suppliesinouttbl b WHERE a.supplyid=b.supplyid and a.category='" & Category.Text & "' and b.stock='" & Stock.Text & "' ORDER BY b.datestock DESC")
                 RadGrid1.DataSource = dtCommon
                 RadGrid1.DataBind()
             End If
         ElseIf Category.Text <> "ALL" And RadTextBox1.Text <> Nothing Then
             If Stock.Text = "ALL" Then
-                SqlQuery("SELECT  a.invoice,a.Itemname,b.Quantity,a.UOM,a.Category,b.stock,DATE_FORMAT(b.datestock,'%m/%d/%Y') as datestock FROM suppliestbl a,suppliesinouttbl b WHERE a.supplyid=b.supplyid and a.itemname like '" & RadTextBox1.Text & "%' and a.category='" & Category.Text & "' ORDER BY b.datestock DESC")
+                SqlQuery("SELECT  b.invoice,a.Itemname,b.Quantity,a.UOM,a.Category,b.stock,DATE_FORMAT(b.datestock,'%m/%d/%Y') as datestock FROM suppliestbl a,suppliesinouttbl b WHERE a.supplyid=b.supplyid and a.itemname like '" & RadTextBox1.Text & "%' and a.category='" & Category.Text & "' ORDER BY b.datestock DESC")
                 RadGrid1.DataSource = dtCommon
                 RadGrid1.DataBind()
             Else
-                SqlQuery("SELECT  a.invoice,a.Itemname,b.Quantity,a.UOM,a.Category,b.stock,DATE_FORMAT(b.datestock,'%m/%d/%Y') as datestock FROM suppliestbl a,suppliesinouttbl b WHERE a.supplyid=b.supplyid and a.itemname like '" & RadTextBox1.Text & "%' and a.category='" & Category.Text & "' and b.stock='" & Stock.Text & "' ORDER BY b.datestock DESC")
+                SqlQuery("SELECT  b.invoice,a.Itemname,b.Quantity,a.UOM,a.Category,b.stock,DATE_FORMAT(b.datestock,'%m/%d/%Y') as datestock FROM suppliestbl a,suppliesinouttbl b WHERE a.supplyid=b.supplyid and a.itemname like '" & RadTextBox1.Text & "%' and a.category='" & Category.Text & "' and b.stock='" & Stock.Text & "' ORDER BY b.datestock DESC")
                 RadGrid1.DataSource = dtCommon
                 RadGrid1.DataBind()
             End If

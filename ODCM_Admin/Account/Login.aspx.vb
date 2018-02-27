@@ -53,7 +53,7 @@ Public Partial Class Account_Login
             If Age = Nothing And Role = "User" Then
                 Response.Redirect("~/AddClient.aspx")
             Else
-                Response.Redirect("~/Default.aspx")
+                Response.Redirect("~/.aspx")
             End If
         Else
                 RadWindowManager1.RadAlert("Incorrect Password.", 330, 180, "DENTCAST", "callBackFn", "/Images/Error.png")

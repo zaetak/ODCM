@@ -13,9 +13,17 @@ Imports System
 Partial Class ClientList
     Inherits System.Web.UI.Page
     Public Sub LoadClients()
-        SqlQuery("SELECT ClientTbl.LastName,ClientTbl.FirstName,ClientTbl.MiddleName,(Select IFNULL(max(DATE_FORMAT(patientteeth.examdate, '%M %d, %Y')), 'No records to display.')) as examdate FROM clienttbl LEFT OUTER JOIN  patientteeth ON ClientTbl.clientID = patientteeth.clientID WHERE clienttbl.isverified = 1 AND role = 'User' GROUP BY clienttbl.clientID ORDER BY clienttbl.lastname")
+        SqlQuery("SELECT ClientTbl.clientID , ClientTbl.LastName,ClientTbl.FirstName,ClientTbl.MiddleName,(Select IFNULL(max(DATE_FORMAT(patientteeth.examdate, '%M %d, %Y')), 'No records to display.')) as examdate FROM clienttbl LEFT OUTER JOIN  patientteeth ON ClientTbl.clientID = patientteeth.clientID WHERE clienttbl.isverified = 1 AND role = 'User' GROUP BY clienttbl.clientID ORDER BY clienttbl.lastname")
         RadGrid1.DataSource = dtCommon
         RadGrid1.DataBind()
+    End Sub
+    Private Sub RadGrid1_ItemCommand(sender As Object, e As GridCommandEventArgs) Handles RadGrid1.ItemCommand
+        If e.CommandName = "View" Then
+            Dim item As GridDataItem = CType(e.Item, GridDataItem)
+            Dim ID As String = item("ID").Text
+            Session("ClientID") = ID
+            Response.Redirect("PatientRecord.aspx")
+        End If
     End Sub
 
     Private Sub ClientList_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -27,7 +35,7 @@ Partial Class ClientList
         End If
     End Sub
     Public Sub SearchStudent()
-        SqlQuery("SELECT ClientTbl.LastName,ClientTbl.FirstName,ClientTbl.MiddleName,(Select max(DATE_FORMAT(patientteeth.examdate, '%M %d, %Y'))) as examdate FROM clienttbl LEFT OUTER JOIN patientteeth ON ClientTbl.clientID = patientteeth.clientID WHERE (ClientTbl.LastName LIKE '" & RadTextBox1.Text & "%' OR ClientTbl.FirstName LIKE '" & RadTextBox1.Text & "%' OR ClientTbl.MiddleName LIKE '" & RadTextBox1.Text & "%') AND clienttbl.IsVerified = 1 AND role = 'User' ORDER BY patientteeth.examdate DESC , ClientTbl.LastName")
+        SqlQuery("SELECT ClientTbl.clientID , ClientTbl.LastName,ClientTbl.FirstName,ClientTbl.MiddleName,(Select max(DATE_FORMAT(patientteeth.examdate, '%M %d, %Y'))) as examdate FROM clienttbl LEFT OUTER JOIN patientteeth ON ClientTbl.clientID = patientteeth.clientID WHERE (ClientTbl.LastName LIKE '" & RadTextBox1.Text & "%' OR ClientTbl.FirstName LIKE '" & RadTextBox1.Text & "%' OR ClientTbl.MiddleName LIKE '" & RadTextBox1.Text & "%') AND clienttbl.IsVerified = 1 AND role = 'User' ORDER BY patientteeth.examdate DESC , ClientTbl.LastName")
         RadGrid1.DataSource = dtCommon
         RadGrid1.DataBind()
     End Sub

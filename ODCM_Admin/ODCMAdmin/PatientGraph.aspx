@@ -182,7 +182,7 @@
             <td class="text-left">
               
                    <strong>
-                <telerik:RadButton ID="RadButton1" runat="server" OnClientClicked="exportRadHtmlChart" Font-Bold="True" Font-Names="Century Gothic" Height="25px" style="font-size: 16px; margin-top: 0px" Text="Print" Width="117px" Skin="Bootstrap" BorderColor="#666666" CssClass="auto-style2" Target="_blank" AutoPostBack="False">
+                <telerik:RadButton ID="RadButton1" runat="server" Font-Bold="True" Font-Names="Century Gothic" Height="25px" style="font-size: 16px; margin-top: 0px" Text="Print" Width="117px" Skin="Bootstrap" BorderColor="#666666" CssClass="auto-style2" Target="_blank"></telerik:RadButton>
                 </telerik:RadButton>
                 </strong>
               
@@ -201,7 +201,7 @@
                 <TooltipsAppearance DataFormatString="{0}" />
                 <LabelsAppearance Visible="true" />
                 <Appearance>
-                            <FillStyle BackgroundColor="#850071"></FillStyle>
+                            <FillStyle BackgroundColor="79, 129, 189"></FillStyle>
                         </Appearance>
             </telerik:ColumnSeries>
         </Series>
@@ -224,6 +224,8 @@
     <Legend>
         <Appearance Visible="false" />
     </Legend>
+
+<Zoom Enabled="False"></Zoom>
 </telerik:RadHtmlChart>
     </center>
      <br />

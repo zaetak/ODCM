@@ -175,7 +175,7 @@
         <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="False" 
         GroupPanelPosition="Top" Skin="Bootstrap" 
         style="font-family: 'Segoe UI'; font-size: medium; text-align: center" 
-        Width="1158px" Font-Names="Century Gothic" Font-Size="Medium">
+        Width="1158px" Font-Names="Century Gothic" Font-Size="Medium" AllowPaging="True">
 
 <GroupingSettings CollapseAllTooltip="Collapse all groups"></GroupingSettings>
         <AlternatingItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Font-Names="Century Gothic" Font-Size="Medium" />

@@ -91,6 +91,7 @@ Partial Class ODCMAdmin_TeethRecord
     Public Sub Clear()
         UserID = Page.Session("LoginID")
         SqlQuery("Select concat(lastname,', ',firstname,' ',middlename) as name from clienttbl where clientid='" & UserID & "'")
+        Teethid.Text = Page.Session("teethid")
         PatientName.Text = dtCommon.Rows(0).Item(0).ToString
         Service.Text = Nothing
         RadDatePicker1.SelectedDate = Date.Now
@@ -110,21 +111,27 @@ Partial Class ODCMAdmin_TeethRecord
         RadioButton12.Checked = False
         RadioButton13.Checked = False
         RadioButton9.Checked = False
-
         RadTextBox2.Text = Nothing
     End Sub
 
     Private Sub Orthodontics_Load(sender As Object, e As EventArgs) Handles Me.Load
         UID = Page.Session("ClientID")
+        If Page.Session("viewonly") = True Then
+            LoadPatientTeethInfo()
+            RadButton1.Visible = False
+        ElseIf Page.Session("viewonly") = False Then
+            Clear()
+            RadButton1.Visible = True
+        End If
         If IsPostBack = False Then
             LoadService()
 
-            If Request.QueryString("PatientTeethID") <> Nothing Then
-                LoadPatientTeethInfo()
-                'RadButton1.Visible = False
-            Else
-                'RadButton1.Visible = True
-            End If
+            'If Request.QueryString("PatientTeethID") <> Nothing Then
+            '    LoadPatientTeethInfo()
+            '    'RadButton1.Visible = False
+            'Else
+            '    'RadButton1.Visible = True
+            'End If
             'If Request.QueryString("PatientTeethID") <> Nothing Then
             '    Teethid.Text = Request.QueryString("PatientTeethID")
             '    Clear()

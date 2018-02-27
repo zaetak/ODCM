@@ -141,11 +141,12 @@
      <div>
          <telerik:RadGrid RenderMode="Lightweight" ID="RadGrid1" AllowSorting="True" Width="100%"
             AllowAutomaticInserts="True" AllowAutomaticUpdates="True" AllowAutomaticDeletes="True" OnNeedDataSource="RadGrid1_NeedDataSource" runat="server" OnItemCreated="RadGrid_ItemCreated" OnUpdateCommand="RadGrid_ItemUpdated" OnInsertCommand="RadGrid_InsertCommand"
-             AutoGenerateColumns="False" GroupPanelPosition="Top" Skin="Bootstrap" Font-Names="Century Gothic" Font-Size="Medium">
+             AutoGenerateColumns="False" GroupPanelPosition="Top" Skin="Bootstrap" Font-Names="Century Gothic" Font-Size="Medium" AllowPaging="True">
             <PagerStyle Mode="NextPrevAndNumeric"></PagerStyle>
             <MasterTableView Width="100%" CommandItemDisplay="Top"
                 DataKeyNames="SupplyID" InsertItemDisplay="Top"
                 InsertItemPageIndexAction="ShowItemOnFirstPage">
+                <CommandItemSettings ShowRefreshButton="False" />
                 <Columns>
                     <telerik:GridTemplateColumn FilterControlAltText="Filter TemplateColumn column" UniqueName="TemplateColumn">
 
